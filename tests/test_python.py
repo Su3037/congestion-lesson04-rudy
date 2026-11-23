@@ -62,6 +62,7 @@ class Checker(unittest.TestCase):
 
     def test_floor_without_clamp_is_caught(self):
         bad = ROOT / "build" / "bad_clamp.py"
+        bad.parent.mkdir(exist_ok=True)
         bad.write_text((PY / "reference" / "rudy_reference.py").read_text().replace(
             'i = min(grid["nx"] - 1, max(0, math.floor(x / grid["cellW"])))', 'i = math.floor(x / grid["cellW"])'))
         r = json.loads(self.run_check(bad).stdout)

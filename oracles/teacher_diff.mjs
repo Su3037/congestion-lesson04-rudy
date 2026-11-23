@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import * as R from "../site/js/rudy.js";
+import * as R from "./adapter.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cache = path.join(root, ".cache"); fs.mkdirSync(cache, { recursive: true });
@@ -14,7 +14,7 @@ const src = fs.readFileSync(path.join(root, "research/teacher/congestion-core.js
   .replace(/^import .*canvas-hires\.js";\s*$/m, "const fitHiDpiCanvas=()=>{}; const LAB_CANVAS_CSS_HEIGHT=0;");
 const tmp = path.join(cache, "teacher-core.mjs"); fs.writeFileSync(tmp, src);
 const T = await import(pathToFileURL(tmp).href);
-const fx = JSON.parse(fs.readFileSync(path.join(root, "site/data/fixture.json")));
+const fx = JSON.parse(fs.readFileSync(path.join(root, "tests/legacy/fixture.json")));
 
 // Small deterministic PRNG (mulberry32) so the case set is reproducible.
 function rng(seed) { return () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }

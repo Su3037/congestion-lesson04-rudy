@@ -1,42 +1,70 @@
-# Congestion Lesson 04: RUDY congestion estimate
+# Congestion Lesson 04 · RUDY 拥塞估计
 
-A standalone, reproducible lesson on the RUDY routing-demand estimate, made for [yongfu-li/eda-learning#42](https://github.com/yongfu-li/eda-learning/issues/42) (module `module02-01-rudy-estimate`, lab `rudy-estimate`).
+**Live site:** <https://su3037.github.io/congestion-lesson04-rudy/> · English: <https://su3037.github.io/congestion-lesson04-rudy/?lang=en>
 
-**Live site:** https://su3037.github.io/congestion-lesson04-rudy/ (中文) · [English](https://su3037.github.io/congestion-lesson04-rudy/en/)
+A self-contained teaching module for **RUDY (Rectangular Uniform wire DensitY)**, the routing-congestion estimate
+used during placement: the course's Congestion Lesson 04 (module `module02-01-rudy-estimate` of
+[yongfu-li/eda-learning](https://github.com/yongfu-li/eda-learning), issue #42), in the author's course house style.
+One JavaScript domain model and one SVG board draw the website lab, every frame of all four films and every slide
+figure, so what a film shows is exactly what the lab computes.
 
-## What is in it
+一个关于 **RUDY 拥塞估计** 的完整教学模块，沿用作者课程的统一风格：同一套 JS 领域模型和同一个 SVG 棋盘同时绘制网页实验、四部影片的每一帧和课件的每一张图。
 
-- **Reading** (Chinese first, English edition): terms, one net's box and tiles, the boundary rule, accumulation, capacity, why max and total overflow disagree, and how a different RUDY (area-weighted) changes the conclusion.
-- **Live lab:** drag / keyboard / numeric pin editing, presets, undo/reset, model P/A switch, demand/ratio/overflow heat maps on fixed legends, net-by-net step-through with pseudocode, a synchronized number grid, per-tile breakdown, capacity control, side-by-side comparison, and visible error states.
-- **Film:** code-drawn, silent, captioned; 261.9 s full cut and a 41.5 s sample, Chinese and English caption cuts, VTT. The in-page player and the MP4 use the same `renderAt(t)`; "Try this frame" moves the exact state into the lab.
-- **7 challenges** graded on real lab state, two-stage hints, independent vs after-solution tracking.
-- **Slides:** 12 pages with notes, PDF in both languages.
-- **Python practice:** starter, exact-fraction reference, fixtures, expected results, checker (PASS / INCOMPLETE / FAIL).
-- **Concept quiz** (`/study/`) for a pre/post learner study.
-- **Voice kit** (`voice/`): narration written for the ear, pronunciation lexicon, blind listening test, scoring, and retiming from forced alignment. No voice has passed yet, so the film ships silent.
+## What is in it · 内容
 
-## The model, in one paragraph
+| Part | Where |
+|---|---|
+| Lesson page (Chinese first, full English edition), ten numbered sections: goals and problem, films, lesson, slides, lab, challenges, quiz, Python, mistakes, sources | `site/index.html`, text in `site/js/content.js` |
+| Four code-drawn films, each in zh and en: 科普 (cut to the author's music), 精讲 (narrated), 进阶 (reading film with the original score), 实验演示 (narrated walkthrough of the real page); captions, chapters, transcripts | `site/media/<film>.<lang>.mp4`, `site/media/*.vtt`, `media-source/transcripts/` |
+| Interactive lab: drag / keyboard / touch, model P (equal shares) and model A (by area, with H and V maps), demand / ratio / overflow layers on fixed legends, capacity, nets added one by one, per-tile breakdown, undo/redo, export, “Try this frame” from the film | `site/js/lab.js`, `site/js/player.js` |
+| 7 graded challenges (state challenges read the real lab layout, two-stage hints, studied vs independent progress) and a 6-question concept quiz | `site/js/grade.js`, `site/js/content.js` |
+| Slides: 13 pages, PDF + editable PPTX with notes, zh and en | `site/slides/` |
+| Python track: starter with TODOs, reference, checker with 26 hand-derived cases | `exercises/python/`, `site/downloads/rudy-python.zip` |
+| Oracles: the teacher's unmodified code, the verbatim DREAMPlace and OpenROAD RUDY kernels, an exact-fraction Python reference | `oracles/`, `python-ref/`, `docs/oracles.md` |
 
-Model P is the teacher's classroom proxy: for each net, HPWL = box width + height; select every tile between the two corners' tiles (floor, clamp, inclusive); add HPWL ÷ tile count to each. It conserves demand (Σ demand = Σ HPWL). It is not the paper's continuous density and not a router; units are teaching units. Model A, labelled separately, weights by overlap area like DREAMPlace and OpenROAD. Full spec: `docs/model-spec.md`.
+Numbers taught (teacher's 12 × 8 chip, 4 × 2 tiles of 3 × 4, six nets, capacity 2): spread layout demand
+**[[37/6, 37/6], [14/3, 25/6], [20/3, 37/6], [0, 0]]**, sum **34** = total HPWL; total overflow **22**, max **14/3**,
+6 tiles over (C = 1: **28**, **17/3**). Centre cluster: total overflow **5**, max **5**, one tile. A on the edge x = 3:
+max **29/6**. Model A on the spread layout: max overflow **5.54**.
 
-## How the numbers are checked
+## Quick start
 
-| Oracle | Result |
-| --- | --- |
-| Teacher's unmodified JS / Python vs model P | 5000 / 1000 cases, 0 mismatches |
-| Verbatim DREAMPlace / OpenROAD RUDY kernels vs model A | 1489 / 739 cases, 0 mismatches |
-| JS vs exact-fraction Python | 2000 cases, 0 disagreements |
-| fast-check / Hypothesis properties | all pass (fixed seeds) |
-| Router correlation (OpenROAD global route, CircuitNet) | not run (see `docs/oracles.md`) |
+```sh
+npm ci && npx playwright install chromium     # once
+pip install -r requirements-dev.txt           # pytest, hypothesis, python-pptx, pypdf, numpy
+npm run serve                                 # http://localhost:8800/congestion-lesson04-rudy/
+npm test                                      # unit tests (JS + Python)
+node tests/browser.mjs                        # browser checks
+npm run oracle:teacher && npm run oracle:crosslang && npm run oracle:upstream
+```
 
-## Commands
+Full build, voice, film rendering and verification steps: [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
-See `docs/REPRODUCIBILITY.md`. Short version: `npm ci && npm test && npm run build && npm run serve`.
+## Architecture
 
-## Docs
+```
+fixtures/rudy-fixtures.json ─┐
+content/films/*.json ── build-films ─> films/<id>.clock.<lang>.json (reading / music / measured-voice clocks, VTT)
+                             ▼
+site/js/domain.js   RUDY models P and A, validation, metrics, moves
+site/js/board.js    Board(view) -> SVG (one drawing path)
+site/js/timeline.js stateAt(t) -> {board, panel, caption, metrics}   (random access)
+site/js/scene.js    Scene(state) -> 1920×1080 frame      site/js/lab.js   interactive lab
+site/render.html    window.renderAt(t)  ── scripts/render.mjs ── FFmpeg + mix_audio.py ──> <film>.<lang>.mp4
+site/js/slides.js   slides from the same Board           site/js/grade.js challenge grading
+```
 
-`docs/model-spec.md` · `docs/source-audit.md` · `docs/edge-cases.md` · `docs/oracles.md` · `docs/voice-casting.md` · `docs/learner-study.md` · `docs/decision-log.md` · `docs/REPRODUCIBILITY.md` · `docs/verification.md` · `docs/handoff-state.md` · `docs/submission-draft.md` · `docs/outline.md` · `docs/implementation-plan.md` · `docs/reference-adaptation.md`
+## Documentation
 
-## Licences
+- [Reproducibility](docs/REPRODUCIBILITY.md) · [Verification results](docs/verification.md) · [Oracles](docs/oracles.md)
+- [Model specification](docs/model-spec.md) · [Edge cases](docs/edge-cases.md) · [Decision log](docs/decision-log.md) · [Storyboard](media-source/storyboard.md)
+- [Voice casting and listening test](docs/voice-casting.md) · [Source audit](docs/source-audit.md) · [Reference adaptation](docs/reference-adaptation.md)
+- [Handoff state](docs/handoff-state.md) · [Submission draft](docs/submission-draft.md)
 
-New code MIT; new content CC BY 4.0; teacher material CC BY 4.0 (Yongfu Li); DREAMPlace and OpenROAD excerpts BSD-3-Clause, used only as test oracles; fonts SIL OFL 1.1. Details in `NOTICE.md`.
+## Licence and credits
+
+Code: MIT (`LICENSE`). Lesson content and media: CC BY 4.0 (`LICENSE-CONTENT.md`), except the music of the 科普
+film (“We Never (Remix)”, Hi Noise / 秋成), which is credited and not part of that licence. Narration is synthesised
+with Kokoro-82M (Apache-2.0). Fonts: SIL OFL 1.1. The example data and the classroom rule are adapted from
+yongfu-li/eda-learning and credited. The render contract idea is adapted from GateUltra/vlsi-course-director
+(MIT, `NOTICE.md`). See `THIRD_PARTY_NOTICES.md`.

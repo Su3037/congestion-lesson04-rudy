@@ -1,0 +1,282 @@
+[
+ {
+  "take": "concise-k01-1-zh",
+  "text": "这一讲用几分钟，讲清鲁迪：布线之前，怎样估计哪里会挤。"
+ },
+ {
+  "take": "concise-k01-1-en",
+  "text": "In a few minutes: Rudy, a way to estimate where wires will crowd, before routing."
+ },
+ {
+  "take": "concise-k01-2-zh",
+  "text": "鲁迪，是矩形均匀布线密度的英文缩写。"
+ },
+ {
+  "take": "concise-k01-2-en",
+  "text": "Rudy stands for rectangular uniform wire density."
+ },
+ {
+  "take": "concise-k02-1-zh",
+  "text": "老师的例子：12 乘 8 的芯片，六个引脚，六个线网。"
+ },
+ {
+  "take": "concise-k02-1-en",
+  "text": "The teacher's example: a 12 by 8 chip, six pins, six nets."
+ },
+ {
+  "take": "concise-k02-2-zh",
+  "text": "六个线网的半周长线长，加起来是 34。"
+ },
+ {
+  "take": "concise-k02-2-en",
+  "text": "The six nets' H P W L adds up to thirty-four."
+ },
+ {
+  "take": "concise-k02-3-zh",
+  "text": "可这个总数说不出：线会挤在哪里。"
+ },
+ {
+  "take": "concise-k02-3-en",
+  "text": "But a total cannot say where the wires will crowd."
+ },
+ {
+  "take": "concise-k03-1-zh",
+  "text": "所以把芯片切成 4 乘 2 个布线格，每格宽 3、高 4。"
+ },
+ {
+  "take": "concise-k03-1-en",
+  "text": "So cut the chip into 4 by 2 routing tiles, each 3 wide and 4 tall."
+ },
+ {
+  "take": "concise-k03-2-zh",
+  "text": "需求按先列、后行的顺序存，写成 demand x y。"
+ },
+ {
+  "take": "concise-k03-2-en",
+  "text": "Demand is stored as demand x, y: column first, then row."
+ },
+ {
+  "take": "concise-k03-3-zh",
+  "text": "每格能承受的布线量叫容量，这里是 2。"
+ },
+ {
+  "take": "concise-k03-3-en",
+  "text": "What a tile can carry is its capacity; here it is 2."
+ },
+ {
+  "take": "concise-k04-1-zh",
+  "text": "先看一个线网，A B C D。它的包围盒宽 7、高 4，半周长线长等于 11。"
+ },
+ {
+  "take": "concise-k04-1-en",
+  "text": "Take one net, A B C D. Its box is seven wide and four tall, so H P W L is eleven."
+ },
+ {
+  "take": "concise-k04-2-zh",
+  "text": "左下角 1、1，落在格子 0、0；右上角 8、5，落在格子 2、1。"
+ },
+ {
+  "take": "concise-k04-2-en",
+  "text": "The lower-left corner, one, one, is in tile zero, zero. The upper-right corner, eight, five, is in tile two, one."
+ },
+ {
+  "take": "concise-k04-3-zh",
+  "text": "两角之间的格子全部选中：3 乘 2，一共 6 格。"
+ },
+ {
+  "take": "concise-k04-3-en",
+  "text": "Every tile between the two corners is selected: 3 by 2, six tiles."
+ },
+ {
+  "take": "concise-k05-1-zh",
+  "text": "鲁迪把 11 平均分给这 6 格，每格加六分之十一。"
+ },
+ {
+  "take": "concise-k05-1-en",
+  "text": "Rudy shares the eleven equally: each tile gets eleven sixths."
+ },
+ {
+  "take": "concise-k05-2-zh",
+  "text": "格子的下标先向下取整，再夹到网格里面。"
+ },
+ {
+  "take": "concise-k05-2-en",
+  "text": "Tile indices are rounded down, then clamped into the grid."
+ },
+ {
+  "take": "concise-k05-3-zh",
+  "text": "所以压在 x 等于 3 这条边线上的点，归右边那一格。"
+ },
+ {
+  "take": "concise-k05-3-en",
+  "text": "So a point exactly on x equals three belongs to the tile on its right."
+ },
+ {
+  "take": "concise-k06-1-zh",
+  "text": "六个线网依次加进来：A B，C D，A C，B D，A B C D，E F。"
+ },
+ {
+  "take": "concise-k06-1-en",
+  "text": "Add the six nets in turn: A B, C D, A C, B D, A B C D, and E F."
+ },
+ {
+  "take": "concise-k06-2-zh",
+  "text": "最后一个加完之前，看到的只是部分累加。"
+ },
+ {
+  "take": "concise-k06-2-en",
+  "text": "Until the last one is in, the map is only a partial sum."
+ },
+ {
+  "take": "concise-k06-3-zh",
+  "text": "八个格子加起来是 34，正好等于半周长线长的总和。"
+ },
+ {
+  "take": "concise-k06-3-en",
+  "text": "The eight tiles add up to thirty-four, exactly the total H P W L."
+ },
+ {
+  "take": "concise-k07-1-zh",
+  "text": "和容量 2 比：需求除以容量是比值，超出的部分叫溢出。"
+ },
+ {
+  "take": "concise-k07-1-en",
+  "text": "Against capacity 2: demand over capacity is the ratio, and the excess is overflow."
+ },
+ {
+  "take": "concise-k07-2-zh",
+  "text": "六个格子溢出，总溢出 22，最挤的一格多出三分之十四。"
+ },
+ {
+  "take": "concise-k07-2-en",
+  "text": "Six tiles overflow, twenty-two in total; the worst one is fourteen thirds over."
+ },
+ {
+  "take": "concise-k07-3-zh",
+  "text": "把容量改成 1，需求一个数都不变，总溢出变成 28。"
+ },
+ {
+  "take": "concise-k07-3-en",
+  "text": "Set capacity to 1: no demand changes, but total overflow becomes 28."
+ },
+ {
+  "take": "concise-k08-1-zh",
+  "text": "写成代码，先检查输入：网格、容量、引脚都要合法。"
+ },
+ {
+  "take": "concise-k08-1-en",
+  "text": "In code, validate first: the grid, the capacity and the pins must all be valid."
+ },
+ {
+  "take": "concise-k08-2-zh",
+  "text": "然后对每个线网，求包围盒和两角所在的格子，把半周长线长平均加进中间的每一格。"
+ },
+ {
+  "take": "concise-k08-2-en",
+  "text": "Then for each net, find its box and its corner tiles, and add H P W L equally to every tile between."
+ },
+ {
+  "take": "concise-k08-3-zh",
+  "text": "最后用容量读出比值和溢出；容量不会改变需求。"
+ },
+ {
+  "take": "concise-k08-3-en",
+  "text": "Finally read ratio and overflow against capacity; capacity never changes demand."
+ },
+ {
+  "take": "concise-k09-1-zh",
+  "text": "记住：一个线网，一个盒子，盒子里的格子平分它的线长。"
+ },
+ {
+  "take": "concise-k09-1-en",
+  "text": "Remember: one net, one box, and the box's tiles share its length equally."
+ },
+ {
+  "take": "concise-k09-2-zh",
+  "text": "需求守恒：图的总和等于半周长线长的总和；溢出要看容量。"
+ },
+ {
+  "take": "concise-k09-2-en",
+  "text": "Demand is conserved: the map sums to the total H P W L, and overflow depends on capacity."
+ },
+ {
+  "take": "concise-k09-3-zh",
+  "text": "进阶片讲按面积分的鲁迪，以及结论为什么会反过来。"
+ },
+ {
+  "take": "concise-k09-3-en",
+  "text": "The advanced film covers area-weighted Rudy, and why conclusions can flip."
+ },
+ {
+  "take": "lab-w01-1-zh",
+  "text": "这是实验台。打开时载入老师的展开布局：需求图，容量 2。"
+ },
+ {
+  "take": "lab-w01-1-en",
+  "text": "This is the lab. It opens on the teacher's spread layout: a demand map with capacity 2."
+ },
+ {
+  "take": "lab-w02-1-zh",
+  "text": "点一个线网，它的包围盒和选中的格子会高亮，每格加多少也写在格子里。"
+ },
+ {
+  "take": "lab-w02-1-en",
+  "text": "Click a net: its box and selected tiles light up, with each tile's share written inside."
+ },
+ {
+  "take": "lab-w03-1-zh",
+  "text": "直接拖动引脚。把 A 拖到 x 等于 3，整张图当场重算。"
+ },
+ {
+  "take": "lab-w03-1-en",
+  "text": "Drag a pin. Move A to x equals three, and the whole map is recomputed on the spot."
+ },
+ {
+  "take": "lab-w04-1-zh",
+  "text": "也可以用键盘：选中引脚后按方向键；撤销随时退回上一步。"
+ },
+ {
+  "take": "lab-w04-1-en",
+  "text": "Or use the keyboard: select a pin and press the arrow keys; Undo steps back at any time."
+ },
+ {
+  "take": "lab-w05-1-zh",
+  "text": "逐个加入线网，一次加一个，看需求怎样累加。"
+ },
+ {
+  "take": "lab-w05-1-en",
+  "text": "Add nets one by one, and watch the demand accumulate."
+ },
+ {
+  "take": "lab-w06-1-zh",
+  "text": "切换图层看比值和溢出；改容量，需求不变，溢出跟着变。"
+ },
+ {
+  "take": "lab-w06-1-en",
+  "text": "Switch layers to see ratio and overflow. Change capacity: demand stays, overflow moves."
+ },
+ {
+  "take": "lab-w07-1-zh",
+  "text": "看片时随时按，在实验台中打开此帧，实验台会接过画面上的真实坐标。"
+ },
+ {
+  "take": "lab-w07-1-en",
+  "text": "While watching, press Try this frame, and the lab takes the frame's actual coordinates."
+ },
+ {
+  "take": "lab-w08-1-zh",
+  "text": "挑战检查你在实验台里的真实布局，不同的正确摆法都能通过。"
+ },
+ {
+  "take": "lab-w08-1-en",
+  "text": "Challenges check your actual layout in the lab; any correct arrangement passes."
+ },
+ {
+  "take": "lab-w09-1-zh",
+  "text": "最后下载 Python 练习包，补全函数，用检查脚本验证。"
+ },
+ {
+  "take": "lab-w09-1-en",
+  "text": "Finally, download the Python pack, fill in the functions, and check them with the script."
+ }
+]

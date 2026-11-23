@@ -1,0 +1,142 @@
+{
+ "output": "site/media/story.zh.mp4",
+ "lang": "zh",
+ "start": 0,
+ "end": 189.823,
+ "fps": 30,
+ "frames": 5695,
+ "width": 1920,
+ "height": 1080,
+ "crf": 20,
+ "codec": "h264",
+ "pixFmt": "yuv420p",
+ "durationProbe": 189.833333,
+ "film": "story",
+ "clockId": "story.zh",
+ "clockKind": "music",
+ "clockDuration": 189.823,
+ "clockSha256": "c32381a472826b3d1efef0d29b734ab8b0abb35d0756dd263fce8d63206bf4ae",
+ "audio": {
+  "film": "story",
+  "lang": "zh",
+  "duration": 189.823,
+  "audio": "music",
+  "track": "We Never (Remix)（若如初见） · Hi Noise / 秋成",
+  "sourceSha256": "4f8c36a77cf279efa063d3024ea14e027cf40af9508be1892e97b29e6f95b0b9",
+  "inRepository": false,
+  "wavSha256": "dcac108f496514083085eaf87caa9e5b150aa0fd6d179101dd0f11f109336392"
+ },
+ "timeOfFrame": "start + frameIndex / fps",
+ "cueFrames": [
+  {
+   "id": "s01",
+   "firstFrame": 0,
+   "lastFrame": 322
+  },
+  {
+   "id": "s02",
+   "firstFrame": 323,
+   "lastFrame": 522
+  },
+  {
+   "id": "s03",
+   "firstFrame": 523,
+   "lastFrame": 960
+  },
+  {
+   "id": "s04",
+   "firstFrame": 961,
+   "lastFrame": 1217
+  },
+  {
+   "id": "s05",
+   "firstFrame": 1218,
+   "lastFrame": 1471
+  },
+  {
+   "id": "s06",
+   "firstFrame": 1472,
+   "lastFrame": 1598
+  },
+  {
+   "id": "s07",
+   "firstFrame": 1599,
+   "lastFrame": 1894
+  },
+  {
+   "id": "s08",
+   "firstFrame": 1895,
+   "lastFrame": 2045
+  },
+  {
+   "id": "s09",
+   "firstFrame": 2046,
+   "lastFrame": 2404
+  },
+  {
+   "id": "s10",
+   "firstFrame": 2405,
+   "lastFrame": 2915
+  },
+  {
+   "id": "s11",
+   "firstFrame": 2916,
+   "lastFrame": 3074
+  },
+  {
+   "id": "s12",
+   "firstFrame": 3075,
+   "lastFrame": 3578
+  },
+  {
+   "id": "s13",
+   "firstFrame": 3579,
+   "lastFrame": 4024
+  },
+  {
+   "id": "s14",
+   "firstFrame": 4025,
+   "lastFrame": 5117
+  },
+  {
+   "id": "s15",
+   "firstFrame": 5118,
+   "lastFrame": 5694
+  }
+ ],
+ "sources": {
+  "site/css/film.css": "8fe9c86d4c601eb7ddb7eba01a3d9943e2120ccd2aa5b7de87d32ffa6f2c61ed",
+  "site/css/fonts.css": "4f54c21456413d07b1e91ab4218985dc58c6b8c838ea3003bbbbc77c444344a3",
+  "site/data/films/story.clock.zh.json": "c32381a472826b3d1efef0d29b734ab8b0abb35d0756dd263fce8d63206bf4ae",
+  "site/data/films/story.json": "5e1ada124d95e7b9bdfda565d7bd335e3c975661af0d1c507eec04c8972491b0",
+  "site/data/fixtures.json": "445f63dac69aa3f16610573679244baf17cdd2f1bc7b5f8753160dc1b09a6ef6",
+  "site/fonts/JetBrainsMono-Bold.woff2": "42b6a88aab214571ae0cb87569042091c9200f3c24a24ff25d72e882df9960cb",
+  "site/fonts/JetBrainsMono-Regular.woff2": "6a64fefac9232bc4dc056b7ba2d270ddcb81139f66dededcf27d78720cbc84a2",
+  "site/fonts/Newsreader-Italic.woff2": "67a84221c778de1498d6f3a6b0571980eb4dc29ba2d2a4d9081d407d2dc52b54",
+  "site/fonts/Newsreader-Medium.woff2": "cb3e9eb516fb93bb07a3ba8a27dc5c179183f56b09db8fd23c994c37096e4fea",
+  "site/fonts/Newsreader-Regular.woff2": "f98f7cfa2d428a88201d6bbee007a68c2ee42e982bf89c3ede8533c6789a862c",
+  "site/fonts/NotoSans-Italic.woff2": "bce43444caec0a2aa3be3886b0a19ec31196752128d2c07fcc0199a49433e99d",
+  "site/fonts/NotoSans-Regular.woff2": "ec15a2630f2a9393ddc36a26825553f9c14ef42250693b33a726cdab6169ff27",
+  "site/fonts/NotoSans-SemiBold.woff2": "73e9fa87643455f7cec905c4064843e3a11f89889bddcb485375529403a9788e",
+  "site/fonts/NotoSansSC-Bold.woff2": "af8a04fbb97dceceabbd7e0673a7faa22ae30c188d68fadb9838ed3f1b598f43",
+  "site/fonts/NotoSansSC-Regular.woff2": "1987755026c6df6b67e0178de916315e46f08f10cf236fe9f61991f90aac7929",
+  "site/fonts/NotoSerifSC-Regular.woff2": "78402c92ba5a531de22e3b6f7aee98798581b367a9d30ae81dacc3decc874299",
+  "site/fonts/NotoSerifSC-SemiBold.woff2": "09c01939b8bf6059ef25e7306b858113e157ed0b982b95d025cb5a562e7824ab",
+  "site/js/board.js": "32f129c9cdde48a3af4837a0e64ae254df1eec8689c000da29e2d60e04f0e585",
+  "site/js/domain.js": "9e736ad7e79325cf3572a0f3272ddc307964c313ad9973669a3f1522e97b9b3d",
+  "site/js/scene.js": "be0c725ea5de44fe4f8e01faafc89a7a09bfb53f04a383cffc141e897129d272",
+  "site/js/timeline.js": "3a196ae963747c7360a8e2ce740f1610899adfcb367b664640cce59d5adf8292",
+  "site/render.html": "c1b0804625c997af7039b53805566b37737ca6a113504796b2b4f6b84e32d089"
+ },
+ "environment": {
+  "node": "v22.23.5",
+  "playwright": "1.63.0",
+  "chromium": "157.0.8103.78",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "platform": "linux-x64"
+ },
+ "mp4Sha256": "1ae17bd5ef22bb5335582a8d0e1802521eb0605f89184514f5b8af988892826b",
+ "bytes": 13258068,
+ "wallSeconds": 286,
+ "pageErrors": []
+}

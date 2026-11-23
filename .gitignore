@@ -1,9 +1,10 @@
-node_modules/
-dist/
-dist-*/
 build/
+node_modules/
 __pycache__/
 *.pyc
+.DS_Store
+render-tmp/
+*.part.mp4
 .cache/
-media/frames/
-media/stills/
+*.mux.mp4
+scripts/_smoke.mjs

@@ -1,0 +1,407 @@
+{
+ "id": "story",
+ "kind": "music",
+ "music": "wenever",
+ "title": {
+  "zh": "科普 · 哪里会堵",
+  "en": "Popular science · Where will it jam?"
+ },
+ "chapters": {
+  "00": {
+   "zh": "出行",
+   "en": "Trips"
+  },
+  "01": {
+   "zh": "一 · 一个盒子",
+   "en": "I · One box"
+  },
+  "02": {
+   "zh": "二 · 叠起来",
+   "en": "II · Stacking"
+  },
+  "03": {
+   "zh": "三 · 两种摆法",
+   "en": "III · Two layouts"
+  },
+  "04": {
+   "zh": "四 · 规则与模型",
+   "en": "IV · Rules and models"
+  },
+  "05": {
+   "zh": "五 · 在芯片上",
+   "en": "V · On a chip"
+  }
+ },
+ "cues": [
+  {
+   "id": "s01",
+   "scene": "city",
+   "chapter": "00",
+   "layout": "wide",
+   "title": {
+    "zh": "街区",
+    "en": "The blocks"
+   },
+   "lines": [
+    {
+     "zh": "修路之前，先要猜：哪里会堵？",
+     "en": "Before building roads, guess: where will it jam?",
+     "hold": 4
+    },
+    {
+     "zh": "手里只有每趟出行的起点和终点。",
+     "en": "All we know is where each trip starts and ends.",
+     "hold": 3
+    }
+   ],
+   "at": 0
+  },
+  {
+   "id": "s02",
+   "scene": "city_box",
+   "chapter": "00",
+   "layout": "wide",
+   "title": {
+    "zh": "一个矩形",
+    "en": "One rectangle"
+   },
+   "lines": [
+    {
+     "zh": "把一趟出行，平均摊进它的矩形盖住的街区。",
+     "en": "Spread each trip evenly over the blocks its rectangle covers.",
+     "hold": 3
+    }
+   ],
+   "at": 10.75
+  },
+  {
+   "id": "s03",
+   "scene": "chip_turn",
+   "chapter": "01",
+   "layout": "board",
+   "title": {
+    "zh": "芯片上的同一个问题",
+    "en": "The same question on a chip"
+   },
+   "lines": [
+    {
+     "zh": "芯片布线之前，问的是同一个问题。",
+     "en": "Before routing a chip, we ask the same question.",
+     "hold": 3
+    },
+    {
+     "zh": "引脚是起点和终点，线网是要连起来的一组。",
+     "en": "Pins are the stops; a net is a group to be linked.",
+     "hold": 3
+    },
+    {
+     "zh": "线还没画，先估计哪里会挤。",
+     "en": "No wires yet; where will they crowd?",
+     "hold": 3
+    }
+   ],
+   "at": 17.41
+  },
+  {
+   "id": "s04",
+   "scene": "title_story",
+   "chapter": "01",
+   "layout": "title",
+   "title": {
+    "zh": "RUDY",
+    "en": "RUDY"
+   },
+   "lines": [
+    {
+     "zh": "",
+     "en": "",
+     "hold": 6
+    }
+   ],
+   "at": 32.03
+  },
+  {
+   "id": "s05",
+   "scene": "onenet_story",
+   "chapter": "01",
+   "layout": "board",
+   "title": {
+    "zh": "一个线网",
+    "en": "One net"
+   },
+   "lines": [
+    {
+     "zh": "一个线网：宽 7，高 4，HPWL = 11。",
+     "en": "One net: 7 wide, 4 tall, HPWL = 11.",
+     "hold": 2.5
+    },
+    {
+     "zh": "它的盒子盖住 6 个格子。",
+     "en": "Its box covers 6 tiles.",
+     "hold": 2.5
+    }
+   ],
+   "at": 40.6
+  },
+  {
+   "id": "s06",
+   "scene": "deposit_story",
+   "chapter": "01",
+   "layout": "board",
+   "title": {
+    "zh": "平均分",
+    "en": "Equal shares"
+   },
+   "lines": [
+    {
+     "zh": "每格分到 11 ÷ 6。",
+     "en": "Each tile gets 11 ÷ 6.",
+     "hold": 2.5
+    }
+   ],
+   "at": 49.06
+  },
+  {
+   "id": "s07",
+   "scene": "accumulate_story",
+   "chapter": "02",
+   "layout": "board",
+   "title": {
+    "zh": "叠起来",
+    "en": "Stacking"
+   },
+   "lines": [
+    {
+     "zh": "六个线网，一个一个叠上去。",
+     "en": "Six nets, stacked one by one.",
+     "hold": 5
+    },
+    {
+     "zh": "颜色越亮，越挤。",
+     "en": "The brighter, the more crowded.",
+     "hold": 2.5
+    },
+    {
+     "zh": "",
+     "en": "",
+     "hold": 0.5
+    }
+   ],
+   "at": 53.3
+  },
+  {
+   "id": "s08",
+   "scene": "capacity_story",
+   "chapter": "02",
+   "layout": "board",
+   "title": {
+    "zh": "容量",
+    "en": "Capacity"
+   },
+   "lines": [
+    {
+     "zh": "每格只能装 2：多出来的就是溢出。",
+     "en": "Each tile carries 2; the rest is overflow.",
+     "hold": 3
+    }
+   ],
+   "at": 63.15
+  },
+  {
+   "id": "s09",
+   "scene": "final_story",
+   "chapter": "02",
+   "layout": "board",
+   "title": {
+    "zh": "展开的摆法",
+    "en": "Spread out"
+   },
+   "lines": [
+    {
+     "zh": "展开的摆法：总溢出 22。",
+     "en": "Spread out: total overflow 22.",
+     "hold": 2.5
+    },
+    {
+     "zh": "最挤的一格，多出 14/3。",
+     "en": "The worst tile is 14/3 over.",
+     "hold": 3
+    },
+    {
+     "zh": "需求加起来 34，正好是线长总和。",
+     "en": "Demand adds up to 34: the total wirelength.",
+     "hold": 3
+    }
+   ],
+   "at": 68.2
+  },
+  {
+   "id": "s10",
+   "scene": "cluster_story",
+   "chapter": "03",
+   "layout": "board",
+   "title": {
+    "zh": "挤到中间",
+    "en": "Into the middle"
+   },
+   "lines": [
+    {
+     "zh": "全部挤到中间呢？",
+     "en": "Crowd everything into the middle?",
+     "hold": 2.5
+    },
+    {
+     "zh": "总溢出只剩 5。",
+     "en": "Total overflow drops to 5.",
+     "hold": 3
+    },
+    {
+     "zh": "可一个格子要装 7。",
+     "en": "But one tile must carry 7.",
+     "hold": 3.5
+    }
+   ],
+   "at": 80.16
+  },
+  {
+   "id": "s11",
+   "scene": "cluster_hold",
+   "chapter": "03",
+   "layout": "compare",
+   "title": {
+    "zh": "两种摆法",
+    "en": "Two layouts"
+   },
+   "lines": [
+    {
+     "zh": "总数变小，热点更尖。",
+     "en": "A smaller total, a sharper hotspot.",
+     "hold": 3
+    }
+   ],
+   "at": 97.19
+  },
+  {
+   "id": "s12",
+   "scene": "boundary_story",
+   "chapter": "04",
+   "layout": "board",
+   "title": {
+    "zh": "压在线上",
+    "en": "On the line"
+   },
+   "lines": [
+    {
+     "zh": "引脚压在格子的边线上，算哪一格？",
+     "en": "A pin sits on a tile edge: which tile?",
+     "hold": 3.5
+    },
+    {
+     "zh": "向下取整：x = 3 归右边那一格。",
+     "en": "Round down: x = 3 belongs to the tile on the right.",
+     "hold": 4.5
+    },
+    {
+     "zh": "规则写清楚，数字才能复现。",
+     "en": "Write the rule down, and the numbers repeat.",
+     "hold": 3.5
+    }
+   ],
+   "at": 102.5
+  },
+  {
+   "id": "s13",
+   "scene": "modelA_story",
+   "chapter": "04",
+   "layout": "board",
+   "title": {
+    "zh": "按面积分",
+    "en": "Shared by area"
+   },
+   "lines": [
+    {
+     "zh": "工具里的 RUDY，按重叠面积分。",
+     "en": "Tools share demand by overlap area.",
+     "hold": 4
+    },
+    {
+     "zh": "这样算，最挤的一格反而是展开：5.54 对 5。",
+     "en": "Then spread has the worse tile: 5.54 vs 5.",
+     "hold": 5
+    },
+    {
+     "zh": "",
+     "en": "",
+     "hold": 0.5
+    }
+   ],
+   "at": 119.27
+  },
+  {
+   "id": "s14",
+   "scene": "chip_wide",
+   "chapter": "05",
+   "layout": "wide",
+   "title": {
+    "zh": "在真实芯片上",
+    "en": "On a real chip"
+   },
+   "lines": [
+    {
+     "zh": "真实芯片有上百万个线网。",
+     "en": "A real chip has millions of nets.",
+     "hold": 2.5
+    },
+    {
+     "zh": "布局器每走一步，就把这张图重算一遍。",
+     "en": "A placer redraws this map at every step.",
+     "hold": 3.5
+    },
+    {
+     "zh": "所以它必须便宜：每个线网只看一个盒子。",
+     "en": "So it must be cheap: one box per net.",
+     "hold": 3.5
+    },
+    {
+     "zh": "它不布线，不分层，也不看方向。",
+     "en": "It does not route, and ignores layers and direction.",
+     "hold": 3.5
+    },
+    {
+     "zh": "它只是布线之前的一张天气预报。",
+     "en": "It is a weather forecast before routing.",
+     "hold": 4
+    },
+    {
+     "zh": "真正布线之后，热点还在那里吗？",
+     "en": "After real routing, will the hotspots still be there?",
+     "hold": 4
+    }
+   ],
+   "at": 134.16
+  },
+  {
+   "id": "s15",
+   "scene": "end_story",
+   "chapter": "05",
+   "layout": "title",
+   "title": {
+    "zh": "去实验台",
+    "en": "To the lab"
+   },
+   "lines": [
+    {
+     "zh": "去实验台，亲手拖一拖这些引脚。",
+     "en": "Go to the lab and drag these pins yourself.",
+     "hold": 3.5
+    },
+    {
+     "zh": "音乐：We Never (Remix)（若如初见）· Hi Noise / 秋成",
+     "en": "Music: We Never (Remix) · Hi Noise / Qiucheng",
+     "hold": 4
+    }
+   ],
+   "at": 170.6
+  }
+ ]
+}

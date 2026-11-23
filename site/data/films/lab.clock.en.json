@@ -1,0 +1,171 @@
+{
+ "id": "lab.en",
+ "film": "lab",
+ "lang": "en",
+ "provisional": false,
+ "scriptSha256": "505b5c6131a956fbc9eeac8ed2592286f217761c9a7391950168acd38f0e899e",
+ "kind": "voice",
+ "rule": {
+  "pause": 0.55,
+  "offset": 0.2,
+  "minLine": 1.6,
+  "lead": 0.6,
+  "tail": 0.8,
+  "lastTail": 2.5
+ },
+ "duration": 61.6,
+ "segments": [
+  {
+   "id": "w01",
+   "chapter": "01",
+   "start": 0,
+   "end": 6.95,
+   "sceneEnd": 7.75,
+   "lines": [
+    {
+     "start": 0.6,
+     "end": 6.95,
+     "voice": "media-source/voice/lab-w01-1-en.m4a",
+     "voiceAt": 0.8,
+     "voiceDuration": 5.8
+    }
+   ]
+  },
+  {
+   "id": "w02",
+   "chapter": "01",
+   "start": 7.75,
+   "end": 13.8,
+   "sceneEnd": 14.6,
+   "lines": [
+    {
+     "start": 7.75,
+     "end": 13.8,
+     "voice": "media-source/voice/lab-w02-1-en.m4a",
+     "voiceAt": 7.95,
+     "voiceDuration": 5.5
+    }
+   ]
+  },
+  {
+   "id": "w03",
+   "chapter": "02",
+   "start": 14.6,
+   "end": 20.55,
+   "sceneEnd": 21.35,
+   "lines": [
+    {
+     "start": 14.6,
+     "end": 20.55,
+     "voice": "media-source/voice/lab-w03-1-en.m4a",
+     "voiceAt": 14.8,
+     "voiceDuration": 5.4
+    }
+   ]
+  },
+  {
+   "id": "w04",
+   "chapter": "02",
+   "start": 21.35,
+   "end": 27.7,
+   "sceneEnd": 28.5,
+   "lines": [
+    {
+     "start": 21.35,
+     "end": 27.7,
+     "voice": "media-source/voice/lab-w04-1-en.m4a",
+     "voiceAt": 21.55,
+     "voiceDuration": 5.8
+    }
+   ]
+  },
+  {
+   "id": "w05",
+   "chapter": "02",
+   "start": 28.5,
+   "end": 32.5,
+   "sceneEnd": 33.3,
+   "lines": [
+    {
+     "start": 28.5,
+     "end": 32.5,
+     "voice": "media-source/voice/lab-w05-1-en.m4a",
+     "voiceAt": 28.7,
+     "voiceDuration": 3.4
+    }
+   ]
+  },
+  {
+   "id": "w06",
+   "chapter": "02",
+   "start": 33.3,
+   "end": 40.25,
+   "sceneEnd": 41.05,
+   "lines": [
+    {
+     "start": 33.3,
+     "end": 40.25,
+     "voice": "media-source/voice/lab-w06-1-en.m4a",
+     "voiceAt": 33.5,
+     "voiceDuration": 6.4
+    }
+   ]
+  },
+  {
+   "id": "w07",
+   "chapter": "03",
+   "start": 41.05,
+   "end": 46.7,
+   "sceneEnd": 47.5,
+   "lines": [
+    {
+     "start": 41.05,
+     "end": 46.7,
+     "voice": "media-source/voice/lab-w07-1-en.m4a",
+     "voiceAt": 41.25,
+     "voiceDuration": 5.1
+    }
+   ]
+  },
+  {
+   "id": "w08",
+   "chapter": "04",
+   "start": 47.5,
+   "end": 52.85,
+   "sceneEnd": 53.65,
+   "lines": [
+    {
+     "start": 47.5,
+     "end": 52.85,
+     "voice": "media-source/voice/lab-w08-1-en.m4a",
+     "voiceAt": 47.7,
+     "voiceDuration": 4.8
+    }
+   ]
+  },
+  {
+   "id": "w09",
+   "chapter": "04",
+   "start": 53.65,
+   "end": 59.1,
+   "sceneEnd": 61.6,
+   "lines": [
+    {
+     "start": 53.65,
+     "end": 59.1,
+     "voice": "media-source/voice/lab-w09-1-en.m4a",
+     "voiceAt": 53.85,
+     "voiceDuration": 4.9
+    }
+   ]
+  }
+ ],
+ "violations": [],
+ "voices": {
+  "engine": "Kokoro-82M via kokoro-onnx (offline, Apache-2.0 weights)",
+  "zh": "zf_039 · kokoro-v1.1-zh · misaki[zh] G2P · speed 1.0",
+  "en": "af_heart · kokoro-v1.0 · espeak-ng G2P · speed 0.95",
+  "zhVoice": "zf_039",
+  "enVoice": "af_heart"
+ }
+}

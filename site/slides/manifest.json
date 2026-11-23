@@ -1,0 +1,136 @@
+{
+ "zh": [
+  {
+   "img": "slides/zh/slide-01.jpg",
+   "title": "RUDY 拥塞估计",
+   "notes": "这一课讲 RUDY：在布线之前，用每个线网的包围盒估计哪些区域会拥塞。"
+  },
+  {
+   "img": "slides/zh/slide-02.jpg",
+   "title": "问题：线长够了，为什么还要看拥塞",
+   "notes": "上一课的 HPWL 只给一个总数。两种布局总线长相同，拥塞可能完全不同，所以布局还需要一张“哪里挤”的图。"
+  },
+  {
+   "img": "slides/zh/slide-03.jpg",
+   "title": "布线格与需求图",
+   "notes": "我们把芯片切成布线格，每个格记一个需求值。下标的顺序和老师的代码一致：先列后行。"
+  },
+  {
+   "img": "slides/zh/slide-04.jpg",
+   "title": "一个线网：包围盒与 HPWL",
+   "notes": "先看一个线网。它的包围盒宽 7、高 4，所以半周长线长等于 11。"
+  },
+  {
+   "img": "slides/zh/slide-05.jpg",
+   "title": "格下标：向下取整，再夹紧",
+   "notes": "边界上的点必须有明确规则。本课用向下取整再夹紧：压在 x 等于 3 的点属于右边一列。"
+  },
+  {
+   "img": "slides/zh/slide-06.jpg",
+   "title": "选中的格：端点格规则",
+   "notes": "求包围盒两个角各自所在的格，再选中它们之间的全部格子。ABCD 选中 6 格，每格加六分之十一。"
+  },
+  {
+   "img": "slides/zh/slide-07.jpg",
+   "title": "六个线网叠加成需求图",
+   "notes": "六个线网依次加入，叠成整张需求图。总和是 34，正好等于所有线网的 HPWL 之和。"
+  },
+  {
+   "img": "slides/zh/slide-08.jpg",
+   "title": "容量、比值与溢出",
+   "notes": "容量只改变读数。容量从 2 降到 1，需求图一个数都不变，变的是比值和溢出。"
+  },
+  {
+   "img": "slides/zh/slide-09.jpg",
+   "title": "比较摆法：先说清楚指标",
+   "notes": "聚集的摆法总溢出更小，却把全部需求压进一个格。比较之前必须先说清楚用哪个指标。"
+  },
+  {
+   "img": "slides/zh/slide-10.jpg",
+   "title": "模型 A：按面积分配",
+   "notes": "按面积分配时，格子分到的量与它和包围盒的重叠面积成正比。模型不同，热点的数字也不同。"
+  },
+  {
+   "img": "slides/zh/slide-11.jpg",
+   "title": "伪代码",
+   "notes": "代码先验证输入，再逐个线网分配需求，最后才用容量。"
+  },
+  {
+   "img": "slides/zh/slide-12.jpg",
+   "title": "RUDY 不能告诉你的事",
+   "notes": "RUDY 快，但它只是估计。真正的拥塞要靠全局布线来确认。"
+  },
+  {
+   "img": "slides/zh/slide-13.jpg",
+   "title": "练习",
+   "notes": "最后到实验台和 Python 练习里，自己动手算一遍。"
+  }
+ ],
+ "en": [
+  {
+   "img": "slides/en/slide-01.jpg",
+   "title": "RUDY congestion estimate",
+   "notes": "This lesson is about RUDY: estimating, before routing, which regions will be congested, from each net's bounding box."
+  },
+  {
+   "img": "slides/en/slide-02.jpg",
+   "title": "Problem: why congestion, when we have wirelength",
+   "notes": "HPWL gives one total. Two layouts with the same total can differ completely in congestion, so placement also needs a map of where the wires crowd."
+  },
+  {
+   "img": "slides/en/slide-03.jpg",
+   "title": "Routing tiles and the demand map",
+   "notes": "We cut the chip into routing tiles and keep one demand value per tile, indexed column first as in the teacher's code."
+  },
+  {
+   "img": "slides/en/slide-04.jpg",
+   "title": "One net: bounding box and HPWL",
+   "notes": "Start with one net. Its box is 7 wide and 4 tall, so its HPWL is 11."
+  },
+  {
+   "img": "slides/en/slide-05.jpg",
+   "title": "Tile index: round down, then clamp",
+   "notes": "A point on an edge needs a stated rule. Here we round down, then clamp: x = 3 belongs to the column on its right."
+  },
+  {
+   "img": "slides/en/slide-06.jpg",
+   "title": "Selected tiles: the endpoint-tile rule",
+   "notes": "Find the tiles of the box's two corners and select every tile between them. ABCD selects 6 tiles; each gets eleven sixths."
+  },
+  {
+   "img": "slides/en/slide-07.jpg",
+   "title": "Six nets stack into the demand map",
+   "notes": "The six nets are added one by one into the demand map. It sums to 34, exactly the total HPWL."
+  },
+  {
+   "img": "slides/en/slide-08.jpg",
+   "title": "Capacity, ratio and overflow",
+   "notes": "Capacity only changes the readings. Dropping it from 2 to 1 leaves every demand value as it is; ratio and overflow change."
+  },
+  {
+   "img": "slides/en/slide-09.jpg",
+   "title": "Comparing layouts: name the metric first",
+   "notes": "The cluster has less total overflow but crams all demand into one tile. Name the metric before you compare."
+  },
+  {
+   "img": "slides/en/slide-10.jpg",
+   "title": "Model A: share by area",
+   "notes": "Sharing by area gives each tile a part proportional to its overlap with the box. A different model gives different hotspot numbers."
+  },
+  {
+   "img": "slides/en/slide-11.jpg",
+   "title": "Pseudocode",
+   "notes": "The code validates its input, then deposits each net, and uses capacity only at the end."
+  },
+  {
+   "img": "slides/en/slide-12.jpg",
+   "title": "What RUDY cannot tell you",
+   "notes": "RUDY is fast, but it is an estimate. Real congestion is confirmed by global routing."
+  },
+  {
+   "img": "slides/en/slide-13.jpg",
+   "title": "Practice",
+   "notes": "Finally, work it yourself in the lab and in the Python practice."
+  }
+ ]
+}

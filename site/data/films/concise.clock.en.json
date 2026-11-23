@@ -1,0 +1,290 @@
+{
+ "id": "concise.en",
+ "film": "concise",
+ "lang": "en",
+ "provisional": false,
+ "scriptSha256": "2338507c48b2989e910abd344afc059c0376fae928bce3eab8ce1fd76db9f976",
+ "kind": "voice",
+ "rule": {
+  "pause": 0.55,
+  "offset": 0.2,
+  "minLine": 1.6,
+  "lead": 0.6,
+  "tail": 0.8,
+  "lastTail": 2.5
+ },
+ "duration": 152.313,
+ "segments": [
+  {
+   "id": "k01",
+   "chapter": "01",
+   "start": 0,
+   "end": 10.2,
+   "sceneEnd": 11,
+   "lines": [
+    {
+     "start": 0.6,
+     "end": 6.45,
+     "voice": "media-source/voice/concise-k01-1-en.m4a",
+     "voiceAt": 0.8,
+     "voiceDuration": 5.3
+    },
+    {
+     "start": 6.45,
+     "end": 10.2,
+     "voice": "media-source/voice/concise-k01-2-en.m4a",
+     "voiceAt": 6.65,
+     "voiceDuration": 3.2
+    }
+   ]
+  },
+  {
+   "id": "k02",
+   "chapter": "01",
+   "start": 11,
+   "end": 23.113,
+   "sceneEnd": 23.913,
+   "lines": [
+    {
+     "start": 11,
+     "end": 15.85,
+     "voice": "media-source/voice/concise-k02-1-en.m4a",
+     "voiceAt": 11.2,
+     "voiceDuration": 4.3
+    },
+    {
+     "start": 15.85,
+     "end": 19.8,
+     "voice": "media-source/voice/concise-k02-2-en.m4a",
+     "voiceAt": 16.05,
+     "voiceDuration": 3.4
+    },
+    {
+     "start": 19.8,
+     "end": 23.113,
+     "voice": "media-source/voice/concise-k02-3-en.m4a",
+     "voiceAt": 20,
+     "voiceDuration": 2.763
+    }
+   ]
+  },
+  {
+   "id": "k03",
+   "chapter": "02",
+   "start": 23.913,
+   "end": 37.463,
+   "sceneEnd": 38.263,
+   "lines": [
+    {
+     "start": 23.913,
+     "end": 29.263,
+     "voice": "media-source/voice/concise-k03-1-en.m4a",
+     "voiceAt": 24.113,
+     "voiceDuration": 4.8
+    },
+    {
+     "start": 29.263,
+     "end": 33.713,
+     "voice": "media-source/voice/concise-k03-2-en.m4a",
+     "voiceAt": 29.463,
+     "voiceDuration": 3.9
+    },
+    {
+     "start": 33.713,
+     "end": 37.463,
+     "voice": "media-source/voice/concise-k03-3-en.m4a",
+     "voiceAt": 33.913,
+     "voiceDuration": 3.2
+    }
+   ]
+  },
+  {
+   "id": "k04",
+   "chapter": "03",
+   "start": 38.263,
+   "end": 59.213,
+   "sceneEnd": 60.013,
+   "lines": [
+    {
+     "start": 38.263,
+     "end": 45.813,
+     "voice": "media-source/voice/concise-k04-1-en.m4a",
+     "voiceAt": 38.463,
+     "voiceDuration": 7
+    },
+    {
+     "start": 45.813,
+     "end": 53.863,
+     "voice": "media-source/voice/concise-k04-2-en.m4a",
+     "voiceAt": 46.013,
+     "voiceDuration": 7.5
+    },
+    {
+     "start": 53.863,
+     "end": 59.213,
+     "voice": "media-source/voice/concise-k04-3-en.m4a",
+     "voiceAt": 54.063,
+     "voiceDuration": 4.8
+    }
+   ]
+  },
+  {
+   "id": "k05",
+   "chapter": "03",
+   "start": 60.013,
+   "end": 73.763,
+   "sceneEnd": 74.563,
+   "lines": [
+    {
+     "start": 60.013,
+     "end": 64.663,
+     "voice": "media-source/voice/concise-k05-1-en.m4a",
+     "voiceAt": 60.213,
+     "voiceDuration": 4.1
+    },
+    {
+     "start": 64.663,
+     "end": 68.713,
+     "voice": "media-source/voice/concise-k05-2-en.m4a",
+     "voiceAt": 64.863,
+     "voiceDuration": 3.5
+    },
+    {
+     "start": 68.713,
+     "end": 73.763,
+     "voice": "media-source/voice/concise-k05-3-en.m4a",
+     "voiceAt": 68.913,
+     "voiceDuration": 4.5
+    }
+   ]
+  },
+  {
+   "id": "k06",
+   "chapter": "04",
+   "start": 74.563,
+   "end": 91.863,
+   "sceneEnd": 92.663,
+   "lines": [
+    {
+     "start": 74.563,
+     "end": 82.563,
+     "voice": "media-source/voice/concise-k06-1-en.m4a",
+     "voiceAt": 74.763,
+     "voiceDuration": 5.6
+    },
+    {
+     "start": 82.563,
+     "end": 86.513,
+     "voice": "media-source/voice/concise-k06-2-en.m4a",
+     "voiceAt": 82.763,
+     "voiceDuration": 3.4
+    },
+    {
+     "start": 86.513,
+     "end": 91.863,
+     "voice": "media-source/voice/concise-k06-3-en.m4a",
+     "voiceAt": 86.713,
+     "voiceDuration": 4.8
+    }
+   ]
+  },
+  {
+   "id": "k07",
+   "chapter": "05",
+   "start": 92.663,
+   "end": 110.713,
+   "sceneEnd": 111.513,
+   "lines": [
+    {
+     "start": 92.663,
+     "end": 99.213,
+     "voice": "media-source/voice/concise-k07-1-en.m4a",
+     "voiceAt": 92.863,
+     "voiceDuration": 6
+    },
+    {
+     "start": 99.213,
+     "end": 104.763,
+     "voice": "media-source/voice/concise-k07-2-en.m4a",
+     "voiceAt": 99.413,
+     "voiceDuration": 5
+    },
+    {
+     "start": 104.763,
+     "end": 110.713,
+     "voice": "media-source/voice/concise-k07-3-en.m4a",
+     "voiceAt": 104.963,
+     "voiceDuration": 5.4
+    }
+   ]
+  },
+  {
+   "id": "k08",
+   "chapter": "06",
+   "start": 111.513,
+   "end": 131.263,
+   "sceneEnd": 132.063,
+   "lines": [
+    {
+     "start": 111.513,
+     "end": 117.263,
+     "voice": "media-source/voice/concise-k08-1-en.m4a",
+     "voiceAt": 111.713,
+     "voiceDuration": 5.2
+    },
+    {
+     "start": 117.263,
+     "end": 125.113,
+     "voice": "media-source/voice/concise-k08-2-en.m4a",
+     "voiceAt": 117.463,
+     "voiceDuration": 7.3
+    },
+    {
+     "start": 125.113,
+     "end": 131.263,
+     "voice": "media-source/voice/concise-k08-3-en.m4a",
+     "voiceAt": 125.313,
+     "voiceDuration": 5.6
+    }
+   ]
+  },
+  {
+   "id": "k09",
+   "chapter": "06",
+   "start": 132.063,
+   "end": 149.813,
+   "sceneEnd": 152.313,
+   "lines": [
+    {
+     "start": 132.063,
+     "end": 137.313,
+     "voice": "media-source/voice/concise-k09-1-en.m4a",
+     "voiceAt": 132.263,
+     "voiceDuration": 4.7
+    },
+    {
+     "start": 137.313,
+     "end": 144.663,
+     "voice": "media-source/voice/concise-k09-2-en.m4a",
+     "voiceAt": 137.513,
+     "voiceDuration": 6.8
+    },
+    {
+     "start": 144.663,
+     "end": 149.813,
+     "voice": "media-source/voice/concise-k09-3-en.m4a",
+     "voiceAt": 144.863,
+     "voiceDuration": 4.6
+    }
+   ]
+  }
+ ],
+ "violations": [],
+ "voices": {
+  "engine": "Kokoro-82M via kokoro-onnx (offline, Apache-2.0 weights)",
+  "zh": "zf_039 · kokoro-v1.1-zh · misaki[zh] G2P · speed 1.0",
+  "en": "af_heart · kokoro-v1.0 · espeak-ng G2P · speed 0.95",
+  "zhVoice": "zf_039",
+  "enVoice": "af_heart"
+ }
+}

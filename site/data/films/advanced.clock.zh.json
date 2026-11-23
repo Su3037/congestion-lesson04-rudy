@@ -1,0 +1,195 @@
+{
+ "id": "advanced.zh",
+ "film": "advanced",
+ "lang": "zh",
+ "provisional": false,
+ "scriptSha256": "6e1e562da7929df94e4a5cd339519d50be8c22a9921e17e7efccbba45a01f954",
+ "kind": "reading",
+ "rule": {
+  "zhBase": 0.8,
+  "zhRate": 4.5,
+  "enBase": 0.8,
+  "enRate": 15,
+  "minLine": 2,
+  "tail": 0.8,
+  "lastTail": 2.5,
+  "lead": 0.6
+ },
+ "duration": 143.456,
+ "segments": [
+  {
+   "id": "a01",
+   "chapter": "01",
+   "start": 0,
+   "end": 10.2,
+   "sceneEnd": 11,
+   "lines": [
+    {
+     "start": 0.6,
+     "end": 5.844
+    },
+    {
+     "start": 5.844,
+     "end": 10.2
+    }
+   ]
+  },
+  {
+   "id": "a02",
+   "chapter": "01",
+   "start": 11,
+   "end": 26.956,
+   "sceneEnd": 27.756,
+   "lines": [
+    {
+     "start": 11,
+     "end": 15.467
+    },
+    {
+     "start": 15.467,
+     "end": 21.156
+    },
+    {
+     "start": 21.156,
+     "end": 26.956
+    }
+   ]
+  },
+  {
+   "id": "a03",
+   "chapter": "01",
+   "start": 27.756,
+   "end": 38.356,
+   "sceneEnd": 39.156,
+   "lines": [
+    {
+     "start": 27.756,
+     "end": 33.111
+    },
+    {
+     "start": 33.111,
+     "end": 38.356
+    }
+   ]
+  },
+  {
+   "id": "a04",
+   "chapter": "02",
+   "start": 39.156,
+   "end": 54.667,
+   "sceneEnd": 55.467,
+   "lines": [
+    {
+     "start": 39.156,
+     "end": 43.511
+    },
+    {
+     "start": 43.511,
+     "end": 47.644
+    },
+    {
+     "start": 47.644,
+     "end": 54.667
+    }
+   ]
+  },
+  {
+   "id": "a05",
+   "chapter": "02",
+   "start": 55.467,
+   "end": 66.178,
+   "sceneEnd": 66.978,
+   "lines": [
+    {
+     "start": 55.467,
+     "end": 60.044
+    },
+    {
+     "start": 60.044,
+     "end": 66.178
+    }
+   ]
+  },
+  {
+   "id": "a06",
+   "chapter": "03",
+   "start": 66.978,
+   "end": 89.267,
+   "sceneEnd": 90.067,
+   "lines": [
+    {
+     "start": 66.978,
+     "end": 74.778
+    },
+    {
+     "start": 74.778,
+     "end": 82.467
+    },
+    {
+     "start": 82.467,
+     "end": 89.267
+    }
+   ]
+  },
+  {
+   "id": "a07",
+   "chapter": "03",
+   "start": 90.067,
+   "end": 102.556,
+   "sceneEnd": 103.356,
+   "lines": [
+    {
+     "start": 90.067,
+     "end": 95.756
+    },
+    {
+     "start": 95.756,
+     "end": 102.556
+    }
+   ]
+  },
+  {
+   "id": "a08",
+   "chapter": "04",
+   "start": 103.356,
+   "end": 121.978,
+   "sceneEnd": 122.778,
+   "lines": [
+    {
+     "start": 103.356,
+     "end": 108.156
+    },
+    {
+     "start": 108.156,
+     "end": 115.622
+    },
+    {
+     "start": 115.622,
+     "end": 121.978
+    }
+   ]
+  },
+  {
+   "id": "a09",
+   "chapter": "04",
+   "start": 122.778,
+   "end": 140.956,
+   "sceneEnd": 143.456,
+   "lines": [
+    {
+     "start": 122.778,
+     "end": 129.8
+    },
+    {
+     "start": 129.8,
+     "end": 136.156
+    },
+    {
+     "start": 136.156,
+     "end": 140.956
+    }
+   ]
+  }
+ ],
+ "violations": []
+}

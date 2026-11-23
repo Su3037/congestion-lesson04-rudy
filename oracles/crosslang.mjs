@@ -1,12 +1,12 @@
-// Oracle (d): JS (site/js/rudy.js, floats) versus the independent Python
-// reference (python/rudy_ref.py, exact fractions) for models P and A, on varied
+// Oracle (d): JS (site/js/domain.js via oracles/adapter.mjs, floats) versus the independent Python
+// reference (python-ref/rudy_ref.py, exact fractions) for models P and A, on varied
 // grids, non-integer and boundary coordinates, line nets, coincident pins, and
 // malformed inputs that both must reject.
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import * as R from "../site/js/rudy.js";
+import * as R from "./adapter.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 function rng(seed) { return () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
@@ -46,7 +46,7 @@ const tmp = path.join(root, ".cache"); fs.mkdirSync(tmp, { recursive: true });
 fs.writeFileSync(path.join(tmp, "cross.json"), JSON.stringify(cases));
 const py = `
 import json,sys
-sys.path.insert(0, ${JSON.stringify(path.join(root, "python"))})
+sys.path.insert(0, ${JSON.stringify(path.join(root, "python-ref"))})
 import rudy_ref as R
 cs=json.load(open(${JSON.stringify(path.join(tmp, "cross.json"))}))
 agree=0; bad=0; rej=0; mx=0.0; ex=[]

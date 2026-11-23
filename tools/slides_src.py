@@ -1,0 +1,56 @@
+"""Generate content/slides.json (RUDY deck, zh + en). Figures are board specs drawn by site/js/board.js."""
+import json
+from pathlib import Path
+
+T = 'teacher'
+S = [
+  ('title', None,
+   ('RUDY 拥塞估计', ['Congestion · Lesson 04', '矩形均匀布线密度', '在布线之前，估计导线会挤在哪里'], '这一课讲 RUDY：在布线之前，用每个线网的包围盒估计哪些区域会拥塞。'),
+   ('RUDY congestion estimate', ['Congestion · Lesson 04', 'Rectangular Uniform wire DensitY', 'Before routing, estimate where the wires will crowd'], 'This lesson is about RUDY: estimating, before routing, which regions will be congested, from each net\'s bounding box.')),
+  ('problem', {'fixture': T, 'placement': 'spread', 'layer': 'none', 'highlights': {'flylines': True}},
+   ('问题：线长够了，为什么还要看拥塞', ['HPWL 回答“线大概有多长”', '同样的总长，可以均匀铺开，也可以挤在一处', '挤的地方要绕线、换层，甚至布不通', '第二个问题：线会挤在哪里？'], '上一课的 HPWL 只给一个总数。两种布局总线长相同，拥塞可能完全不同，所以布局还需要一张“哪里挤”的图。'),
+   ('Problem: why congestion, when we have wirelength', ['HPWL answers “how long will the wires be?”', 'The same total can be spread out or piled up', 'Crowded regions force detours, layer changes, failures', 'Second question: where will the wires crowd?'], 'HPWL gives one total. Two layouts with the same total can differ completely in congestion, so placement also needs a map of where the wires crowd.')),
+  ('grid', {'fixture': T, 'placement': 'spread', 'layer': 'none', 'highlights': {'indices': True}},
+   ('布线格与需求图', ['12 × 8 的芯片切成 4 × 2 个格', '每格宽 3、高 4', '需求存成 demand[x][y]：先列 x，后行 y', '每格容量 C = 2'], '我们把芯片切成布线格，每个格记一个需求值。下标的顺序和老师的代码一致：先列后行。'),
+   ('Routing tiles and the demand map', ['The 12 × 8 chip is cut into 4 × 2 tiles', 'Each tile is 3 wide and 4 tall', 'Demand is stored demand[x][y]: column x, then row y', 'Capacity C = 2 per tile'], 'We cut the chip into routing tiles and keep one demand value per tile, indexed column first as in the teacher\'s code.')),
+  ('box', {'fixture': T, 'placement': 'spread', 'layer': 'none', 'selectedNet': 'ABCD', 'showBoxes': 'selected', 'visibleNets': ['ABCD'], 'highlights': {'flylines': True}},
+   ('一个线网：包围盒与 HPWL', ['ABCD：A(1,1) B(8,1) C(1,5) D(8,5)', '包围盒宽 7、高 4', 'HPWL = 7 + 4 = 11', '这 11 就是 RUDY 要分出去的量'], '先看一个线网。它的包围盒宽 7、高 4，所以半周长线长等于 11。'),
+   ('One net: bounding box and HPWL', ['ABCD: A(1,1) B(8,1) C(1,5) D(8,5)', 'Box width 7, height 4', 'HPWL = 7 + 4 = 11', 'RUDY hands out these 11 units'], 'Start with one net. Its box is 7 wide and 4 tall, so its HPWL is 11.')),
+  ('edge', {'fixture': 'edge', 'placement': 'online', 'layer': 'none', 'selectedNet': 'PQ', 'showBoxes': 'selected', 'highlights': {'edge': {'x': 3}, 'tilesOf': 'PQ'}},
+   ('格下标：向下取整，再夹紧', ['i = ⌊x / 格宽⌋，j = ⌊y / 格高⌋', '再夹到 [0, nx − 1]、[0, ny − 1]', 'x = 3 压在边线上：属于右边的第 1 列', 'x = 12 被夹回最后一列'], '边界上的点必须有明确规则。本课用向下取整再夹紧：压在 x 等于 3 的点属于右边一列。'),
+   ('Tile index: round down, then clamp', ['i = ⌊x / tile width⌋, j = ⌊y / tile height⌋', 'then clamp into [0, nx − 1] and [0, ny − 1]', 'x = 3 lies on an edge: column 1, to its right', 'x = 12 is clamped into the last column'], 'A point on an edge needs a stated rule. Here we round down, then clamp: x = 3 belongs to the column on its right.')),
+  ('tiles', {'fixture': T, 'placement': 'spread', 'layer': 'none', 'selectedNet': 'ABCD', 'showBoxes': 'selected', 'visibleNets': ['ABCD'], 'highlights': {'corners': 1, 'tilesOf': 'ABCD'}},
+   ('选中的格：端点格规则', ['左下角 (1, 1) 在格 (0, 0)', '右上角 (8, 5) 在格 (2, 1)', '选中 (0,0) 到 (2,1) 的全部格：3 × 2 = 6', '每格加 11 / 6'], '求包围盒两个角各自所在的格，再选中它们之间的全部格子。ABCD 选中 6 格，每格加六分之十一。'),
+   ('Selected tiles: the endpoint-tile rule', ['Lower-left (1, 1) is in tile (0, 0)', 'Upper-right (8, 5) is in tile (2, 1)', 'Select every tile from (0,0) to (2,1): 3 × 2 = 6', 'Each tile gets 11 / 6'], 'Find the tiles of the box\'s two corners and select every tile between them. ABCD selects 6 tiles; each gets eleven sixths.')),
+  ('accumulate', {'fixture': T, 'placement': 'spread', 'layer': 'demand', 'highlights': {'values': True}},
+   ('六个线网叠加成需求图', ['AB、CD、AC、BD、ABCD、EF 依次加入', '每个线网只处理一次', '八个格的需求加起来 = 34', '正好等于 HPWL 总和：需求守恒'], '六个线网依次加入，叠成整张需求图。总和是 34，正好等于所有线网的 HPWL 之和。'),
+   ('Six nets stack into the demand map', ['AB, CD, AC, BD, ABCD, EF are added in turn', 'Each net is processed once', 'The eight tiles sum to 34', 'Exactly the total HPWL: demand is conserved'], 'The six nets are added one by one into the demand map. It sums to 34, exactly the total HPWL.')),
+  ('capacity', {'fixture': T, 'placement': 'spread', 'layer': 'overflow', 'highlights': {'values': True, 'overflowMarks': True}},
+   ('容量、比值与溢出', ['比值 = 需求 ÷ C', '溢出 = max(0, 需求 − C)', 'C = 2：6 格溢出，总溢出 22，最大 14/3', 'C = 1：总溢出 28，最大 17/3；需求不变'], '容量只改变读数。容量从 2 降到 1，需求图一个数都不变，变的是比值和溢出。'),
+   ('Capacity, ratio and overflow', ['ratio = demand ÷ C', 'overflow = max(0, demand − C)', 'C = 2: 6 tiles over, total 22, max 14/3', 'C = 1: total 28, max 17/3; demand unchanged'], 'Capacity only changes the readings. Dropping it from 2 to 1 leaves every demand value as it is; ratio and overflow change.')),
+  ('compare', {'fixture': T, 'placement': 'cluster', 'layer': 'overflow', 'highlights': {'values': True, 'overflowMarks': True}},
+   ('比较摆法：先说清楚指标', ['中心聚集：HPWL 总和 7，总溢出 5', '展开：HPWL 总和 34，总溢出 22', '但聚集把需求压进一个格：7 / 2 = 3.5 倍容量', '比较之前先说清楚：看总溢出、最大值还是峰值比值'], '聚集的摆法总溢出更小，却把全部需求压进一个格。比较之前必须先说清楚用哪个指标。'),
+   ('Comparing layouts: name the metric first', ['Centre cluster: total HPWL 7, total overflow 5', 'Spread: total HPWL 34, total overflow 22', 'But the cluster puts all demand in one tile: 3.5 × capacity', 'Say first whether you compare total, max, or peak ratio'], 'The cluster has less total overflow but crams all demand into one tile. Name the metric before you compare.')),
+  ('modelA', {'fixture': T, 'placement': 'spread', 'layer': 'demand', 'model': 'A', 'highlights': {'values': True}},
+   ('模型 A：按面积分配', ['每格加 HPWL × 重叠面积 / 盒子面积', '另有水平 H、垂直 V 两张图', '退化成线段的盒子按长度分配（本课规则）', '同一摆法：最大需求从 20/3 ≈ 6.67 变成 7.54'], '按面积分配时，格子分到的量与它和包围盒的重叠面积成正比。模型不同，热点的数字也不同。'),
+   ('Model A: share by area', ['Each tile gets HPWL × overlap area / box area', 'Plus horizontal H and vertical V maps', 'A box that degenerates to a line is shared by length', 'Same layout: max demand 20/3 ≈ 6.67 becomes 7.54'], 'Sharing by area gives each tile a part proportional to its overlap with the box. A different model gives different hotspot numbers.')),
+  ('pseudo', 'code',
+   ('伪代码', ['先验证，再计算', '每个线网：包围盒 → 两个角的格 → 平均分配', '最后用容量读出比值与溢出'], '代码先验证输入，再逐个线网分配需求，最后才用容量。'),
+   ('Pseudocode', ['Validate first, then compute', 'Each net: box → corner tiles → equal share', 'Capacity is used only at the end'], 'The code validates its input, then deposits each net, and uses capacity only at the end.')),
+  ('limits', None,
+   ('RUDY 不能告诉你的事', ['只看包围盒：不知道导线真正怎么走', '模型 P 没有方向、没有金属层', '数字依赖格的大小和边界规则', '它是布线前的估计，不是布线结果'], 'RUDY 快，但它只是估计。真正的拥塞要靠全局布线来确认。'),
+   ('What RUDY cannot tell you', ['It only sees bounding boxes, not real routes', 'Model P has no direction and no metal layers', 'Numbers depend on tile size and the edge rule', 'It is an estimate before routing, not a routing result'], 'RUDY is fast, but it is an estimate. Real congestion is confirmed by global routing.')),
+  ('next', None,
+   ('练习', ['在实验台里拖动引脚，看需求图当场重算', '完成七个挑战：答案检查你的真实布局', '下载 Python 练习包，补全 rudy 函数并通过检查'], '最后到实验台和 Python 练习里，自己动手算一遍。'),
+   ('Practice', ['Drag pins in the lab and watch the map recompute', 'Do the seven challenges: they check your actual layout', 'Download the Python pack, finish the rudy function, pass the checker'], 'Finally, work it yourself in the lab and in the Python practice.')),
+]
+out = {'note': 'Slide source, generated by tools/slides_src.py. Figures are board specs drawn by site/js/board.js from fixtures/rudy-fixtures.json; no figure is hand-drawn.', 'slides': []}
+for sid, fig, zh, en in S:
+    d = {'id': sid, 'fig': None if fig in (None, 'code') else fig}
+    if fig == 'code':
+        d['code'] = True
+    for k, (title, bullets, notes) in (('zh', zh), ('en', en)):
+        d[k] = {'title': title, 'bullets': bullets, 'notes': notes}
+    out['slides'].append(d)
+Path(__file__).resolve().parents[1].joinpath('content/slides.json').write_text(json.dumps(out, ensure_ascii=False, indent=1) + '\n')
+print(len(out['slides']), 'slides')

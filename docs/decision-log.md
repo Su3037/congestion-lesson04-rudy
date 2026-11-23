@@ -1,17 +1,22 @@
-# Decision log
+# Decision log · 决策记录
 
 | # | Decision | Why |
 | --- | --- | --- |
 | D1 | Model P (teacher's equal-share proxy) is the core; model A (area-weighted) is a separate, labelled extension | The issue maps to the teacher's module; production tools use area weighting. Comparing them on the same pins is the lesson's main insight. |
-| D2 | Validate and reject instead of computing on bad input | The teacher's code returns finite-looking numbers for NaN pins, empty nets and capacity 0 (`docs/edge-cases.md`). |
+| D2 | Validate and reject instead of computing on bad input; every placed pin is checked, even one no net uses | The teacher's code returns finite-looking numbers for NaN pins, empty nets and capacity 0 (`docs/edge-cases.md`). Checking all placed pins keeps JS and both Python references identical (cross-language oracle, 2000/2000). |
 | D3 | Pins are points; no cell-centre offsets | The teacher's RUDY functions use the coordinates as given. |
 | D4 | Fixed legends for demand (0–8), ratio (0–4), overflow (0–6) | Equal colour must mean equal value across cases and models. |
-| D5 | Model A's degenerate-box rule spreads a line net's length along the line | Both production tools drop zero-area boxes, which would make line nets invisible in the comparison. Labelled as a teaching choice, and the edge-case table shows what the tools do. |
+| D5 | Model A's degenerate-box rule spreads a line net's length along the line | Both production tools drop zero-area boxes, which would make line nets invisible in the comparison. Labelled as a teaching choice; the edge-case table shows what the tools do. |
 | D6 | "Top 25% mean ratio" statistic, not called ACE | It follows the ACE(x) idea but is not the contest's edge-based definition. |
-| D7 | Silent film with burned-in captions; voice only after a blind listening test | Earlier films with per-cue edge-tts were criticised; this machine cannot reach any TTS. |
-| D8 | Reading-time clock of 4.5 characters/s + 0.9 s, minimum 2.6 s; captions ≤ 16 CJK characters per line, ≤ 2 lines, no break inside numbers, formulas or parentheses | Readable at first viewing; well under the 9 characters/s limit. |
-| D9 | One SVG board for figures, lab, film and slides | Guarantees the film frame and the lab show the same geometry from the same numbers; "Try this frame" moves exact state. |
+| D7 | ~~Silent film; voice only after a blind listening test~~ → superseded by D15 | The owner asked for the series' music and a voiceover, as in the earlier lessons. |
+| D8 | Clocks as in the house style: reading films 0.8 s + characters / 4.5 (zh) or / 15 (en); music film cues pinned to fixed times in the track; voice films timed by the measured length of each take | Same rules as the HPWL lesson, so the four films feel like one series. |
+| D9 | One SVG board for figures, lab, film and slides | The film frame and the lab show the same geometry from the same numbers; "Try this frame" moves exact state. |
 | D10 | Upstream oracles compile the verbatim upstream text with stubs | Comparing against my reading of the code would not be independent. |
-| D11 | MP4s committed directly (≈ 4 MB each), no Git LFS | Pages must not serve LFS pointer files. |
-| D12 | English page and English-caption film share the same data and timeline | One source of truth; no drift between languages. |
-| D13 | Router-correlation oracle not run | OpenROAD/ORFS and CircuitNet were not installable on the build machine. Documented as not run, with steps. |
+| D11 | MP4s committed directly in `site/media/`, no Git LFS | Pages must not serve LFS pointer files. |
+| D12 | zh and en editions share data and timelines; reading/music clocks are shared across languages, voice clocks are per language | One source of truth; English narration is shorter and gets its own clock. |
+| D13 | Router-correlation oracle not run | OpenROAD/ORFS and CircuitNet were not installable on the build machine. Documented as not run, with steps (`docs/handoff-state.md`). |
+| D14 | Rebuild the lesson on the house style of `Su3037/placement-lab02-hpwl`: single page with ten numbered sections, four films (科普 / 精讲 / 进阶 / 实验演示), dark blue-green theme, serif titles, captions zh over en, slides with notes and a PPTX, a downloadable Python pack | The owner said the first version looked different from their previous tutorial repositories. The engine (domain / board / timeline / scene / lab / player / render) was ported from that repository and the RUDY model put inside it; the old oracles and tests now run against the new code through `oracles/adapter.mjs`. |
+| D15 | Narration with Kokoro-82M, offline, synthesised one whole caption line at a time (not word by word), with a lexicon and spoken forms for terms and numbers (RUDY → 鲁迪, HPWL → 半周长线长 / "H P W L", 11/6 → 六分之十一 / "eleven sixths") | Most natural open voice that runs on the build machine (Hugging Face and hosted TTS are blocked; GitHub releases are not). Apache-2.0 weights allow a CC BY course. |
+| D16 | Choose the Chinese voice by an ASR round trip, not by taste: 18 zh voices synthesised the same passage and were transcribed with paraformer-zh; `zf_039` had the lowest character error rate (0.029). English `af_heart` at speed 0.95 | An objective screen first. The blind listening test in `docs/voice-casting.md` stays available to replace the voice if listeners prefer another one. |
+| D17 | Music for the 科普 film is read from a private path (`RUDY_MUSIC_WENEVER` or `/mnt/project-files/private-music/wenever.m4a`), never committed | The owner holds the recording; the repository keeps only cue times (`content/music/wenever.json`). |
+| D18 | The Python practice pack checks five functions against 26 cases written by hand from the lesson's worked example; the exact-fraction reference stays in `python-ref/` for the oracles | Students get small, named tasks; the oracles keep an independent reference that is not the answer key. |

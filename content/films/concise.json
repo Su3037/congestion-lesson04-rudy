@@ -1,0 +1,306 @@
+{
+ "id": "concise",
+ "kind": "voice",
+ "title": {
+  "zh": "精讲 · RUDY 拥塞估计",
+  "en": "Concise · RUDY congestion estimate"
+ },
+ "chapters": {
+  "01": {
+   "zh": "问题",
+   "en": "The problem"
+  },
+  "02": {
+   "zh": "布线格",
+   "en": "Routing tiles"
+  },
+  "03": {
+   "zh": "一个线网",
+   "en": "One net"
+  },
+  "04": {
+   "zh": "需求图",
+   "en": "The demand map"
+  },
+  "05": {
+   "zh": "容量与溢出",
+   "en": "Capacity and overflow"
+  },
+  "06": {
+   "zh": "写成代码",
+   "en": "In code"
+  }
+ },
+ "cues": [
+  {
+   "id": "k01",
+   "scene": "title",
+   "chapter": "01",
+   "layout": "title",
+   "title": {
+    "zh": "开场",
+    "en": "Opening"
+   },
+   "lines": [
+    {
+     "zh": "这一讲用几分钟讲清 RUDY：布线之前，怎样估计哪里会挤。",
+     "en": "In a few minutes: RUDY, a way to estimate where wires will crowd before routing.",
+     "hold": 3,
+     "speak_zh": "这一讲用几分钟，讲清鲁迪：布线之前，怎样估计哪里会挤。",
+     "speak_en": "In a few minutes: Rudy, a way to estimate where wires will crowd, before routing."
+    },
+    {
+     "zh": "RUDY 是“矩形均匀布线密度”的英文缩写。",
+     "en": "RUDY stands for Rectangular Uniform wire DensitY.",
+     "hold": 3,
+     "speak_zh": "鲁迪，是矩形均匀布线密度的英文缩写。",
+     "speak_en": "Rudy stands for rectangular uniform wire density."
+    }
+   ]
+  },
+  {
+   "id": "k02",
+   "scene": "problem",
+   "chapter": "01",
+   "layout": "board",
+   "title": {
+    "zh": "为什么要估计",
+    "en": "Why estimate"
+   },
+   "lines": [
+    {
+     "zh": "老师的例子：12 × 8 的芯片，六个引脚，六个线网。",
+     "en": "The teacher's example: a 12 by 8 chip, six pins, six nets.",
+     "hold": 3,
+     "speak_zh": "老师的例子：12 乘 8 的芯片，六个引脚，六个线网。"
+    },
+    {
+     "zh": "六个线网的 HPWL 加起来是 34。",
+     "en": "The six nets' HPWL adds up to 34.",
+     "hold": 2.5,
+     "speak_zh": "六个线网的半周长线长，加起来是 34。",
+     "speak_en": "The six nets' H P W L adds up to thirty-four."
+    },
+    {
+     "zh": "可这个总数说不出：线会挤在哪里。",
+     "en": "But a total cannot say where the wires will crowd.",
+     "hold": 2.5
+    }
+   ]
+  },
+  {
+   "id": "k03",
+   "scene": "grid",
+   "chapter": "02",
+   "layout": "board",
+   "title": {
+    "zh": "布线格",
+    "en": "Routing tiles"
+   },
+   "lines": [
+    {
+     "zh": "所以把芯片切成 4 × 2 个布线格，每格宽 3、高 4。",
+     "en": "So cut the chip into 4 by 2 routing tiles, each 3 wide and 4 tall.",
+     "hold": 3,
+     "speak_zh": "所以把芯片切成 4 乘 2 个布线格，每格宽 3、高 4。"
+    },
+    {
+     "zh": "需求存成 demand[x][y]：先列，后行。",
+     "en": "Demand is stored as demand[x][y]: column first, then row.",
+     "hold": 3,
+     "speak_zh": "需求按先列、后行的顺序存，写成 demand x y。",
+     "speak_en": "Demand is stored as demand x, y: column first, then row."
+    },
+    {
+     "zh": "每格能承受的布线量叫容量，这里是 2。",
+     "en": "What a tile can carry is its capacity; here it is 2.",
+     "hold": 2.5
+    }
+   ]
+  },
+  {
+   "id": "k04",
+   "scene": "onenet",
+   "chapter": "03",
+   "layout": "board",
+   "title": {
+    "zh": "一个线网",
+    "en": "One net"
+   },
+   "lines": [
+    {
+     "zh": "先看一个线网 ABCD：包围盒宽 7、高 4，HPWL = 11。",
+     "en": "Take one net, ABCD: its box is 7 wide and 4 tall, so HPWL = 11.",
+     "hold": 3.5,
+     "speak_zh": "先看一个线网，A B C D。它的包围盒宽 7、高 4，半周长线长等于 11。",
+     "speak_en": "Take one net, A B C D. Its box is seven wide and four tall, so H P W L is eleven."
+    },
+    {
+     "zh": "左下角 (1, 1) 落在格 (0, 0)，右上角 (8, 5) 落在格 (2, 1)。",
+     "en": "The lower-left corner (1, 1) is in tile (0, 0); the upper-right (8, 5) is in tile (2, 1).",
+     "hold": 4,
+     "speak_zh": "左下角 1、1，落在格子 0、0；右上角 8、5，落在格子 2、1。",
+     "speak_en": "The lower-left corner, one, one, is in tile zero, zero. The upper-right corner, eight, five, is in tile two, one."
+    },
+    {
+     "zh": "两角之间的格子全部选中：3 × 2 = 6 格。",
+     "en": "Every tile between the two corners is selected: 3 by 2, six tiles.",
+     "hold": 4,
+     "speak_zh": "两角之间的格子全部选中：3 乘 2，一共 6 格。"
+    }
+   ]
+  },
+  {
+   "id": "k05",
+   "scene": "deposit",
+   "chapter": "03",
+   "layout": "board",
+   "title": {
+    "zh": "平均分配",
+    "en": "Equal shares"
+   },
+   "lines": [
+    {
+     "zh": "RUDY 把 11 平均分给这 6 格：每格加 11/6。",
+     "en": "RUDY shares the 11 equally: each tile gets 11/6.",
+     "hold": 3.5,
+     "speak_zh": "鲁迪把 11 平均分给这 6 格，每格加六分之十一。",
+     "speak_en": "Rudy shares the eleven equally: each tile gets eleven sixths."
+    },
+    {
+     "zh": "格子的下标先向下取整，再夹到网格里面。",
+     "en": "Tile indices are rounded down, then clamped into the grid.",
+     "hold": 3
+    },
+    {
+     "zh": "所以压在 x = 3 边线上的点，归右边一格。",
+     "en": "So a point exactly on x = 3 belongs to the tile on its right.",
+     "hold": 3.5,
+     "speak_zh": "所以压在 x 等于 3 这条边线上的点，归右边那一格。",
+     "speak_en": "So a point exactly on x equals three belongs to the tile on its right."
+    }
+   ]
+  },
+  {
+   "id": "k06",
+   "scene": "accumulate",
+   "chapter": "04",
+   "layout": "board",
+   "title": {
+    "zh": "叠成需求图",
+    "en": "Building the map"
+   },
+   "lines": [
+    {
+     "zh": "六个线网依次加进来：AB、CD、AC、BD、ABCD、EF。",
+     "en": "Add the six nets in turn: AB, CD, AC, BD, ABCD, EF.",
+     "hold": 8,
+     "speak_zh": "六个线网依次加进来：A B，C D，A C，B D，A B C D，E F。",
+     "speak_en": "Add the six nets in turn: A B, C D, A C, B D, A B C D, and E F."
+    },
+    {
+     "zh": "最后一个加完之前，看到的只是部分累加。",
+     "en": "Until the last one is in, the map is only a partial sum.",
+     "hold": 2.5
+    },
+    {
+     "zh": "八格加起来是 34，正好等于 HPWL 总和。",
+     "en": "The eight tiles add up to 34, exactly the total HPWL.",
+     "hold": 3,
+     "speak_zh": "八个格子加起来是 34，正好等于半周长线长的总和。",
+     "speak_en": "The eight tiles add up to thirty-four, exactly the total H P W L."
+    }
+   ]
+  },
+  {
+   "id": "k07",
+   "scene": "capacity",
+   "chapter": "05",
+   "layout": "board",
+   "title": {
+    "zh": "容量与溢出",
+    "en": "Capacity and overflow"
+   },
+   "lines": [
+    {
+     "zh": "和容量 2 比：需求 ÷ 容量是比值，超出的部分叫溢出。",
+     "en": "Against capacity 2: demand over capacity is the ratio, and the excess is overflow.",
+     "hold": 3.5,
+     "speak_zh": "和容量 2 比：需求除以容量是比值，超出的部分叫溢出。"
+    },
+    {
+     "zh": "六格溢出，总溢出 22，最挤的一格多出 14/3。",
+     "en": "Six tiles overflow: 22 in total, the worst one 14/3 over.",
+     "hold": 3.5,
+     "speak_zh": "六个格子溢出，总溢出 22，最挤的一格多出三分之十四。",
+     "speak_en": "Six tiles overflow, twenty-two in total; the worst one is fourteen thirds over."
+    },
+    {
+     "zh": "把容量改成 1，需求一个数都不变，总溢出变成 28。",
+     "en": "Set capacity to 1: no demand changes, but total overflow becomes 28.",
+     "hold": 3.5
+    }
+   ]
+  },
+  {
+   "id": "k08",
+   "scene": "pseudocode",
+   "chapter": "06",
+   "layout": "code",
+   "title": {
+    "zh": "伪代码",
+    "en": "Pseudocode"
+   },
+   "lines": [
+    {
+     "zh": "写成代码，先检查输入：网格、容量、引脚都要合法。",
+     "en": "In code, validate first: the grid, the capacity and the pins must all be valid.",
+     "hold": 3
+    },
+    {
+     "zh": "然后对每个线网求盒子和两角所在的格，把 HPWL 平均加进中间每一格。",
+     "en": "Then for each net, find its box and its corner tiles, and add HPWL equally to every tile between.",
+     "hold": 6,
+     "speak_zh": "然后对每个线网，求包围盒和两角所在的格子，把半周长线长平均加进中间的每一格。",
+     "speak_en": "Then for each net, find its box and its corner tiles, and add H P W L equally to every tile between."
+    },
+    {
+     "zh": "最后用容量读出比值和溢出；容量不会改变需求。",
+     "en": "Finally read ratio and overflow against capacity; capacity never changes demand.",
+     "hold": 3
+    }
+   ]
+  },
+  {
+   "id": "k09",
+   "scene": "takeaway",
+   "chapter": "06",
+   "layout": "summary",
+   "title": {
+    "zh": "小结",
+    "en": "Summary"
+   },
+   "lines": [
+    {
+     "zh": "记住：一个线网，一个盒子，盒子里的格子平分它的线长。",
+     "en": "Remember: one net, one box, and the box's tiles share its length equally.",
+     "hold": 3
+    },
+    {
+     "zh": "需求守恒：图的总和等于 HPWL 总和；溢出要看容量。",
+     "en": "Demand is conserved: the map sums to total HPWL; overflow depends on capacity.",
+     "hold": 3,
+     "speak_zh": "需求守恒：图的总和等于半周长线长的总和；溢出要看容量。",
+     "speak_en": "Demand is conserved: the map sums to the total H P W L, and overflow depends on capacity."
+    },
+    {
+     "zh": "进阶片讲按面积分的 RUDY，以及结论为什么会反过来。",
+     "en": "The advanced film covers area-weighted RUDY, and why conclusions can flip.",
+     "hold": 3,
+     "speak_zh": "进阶片讲按面积分的鲁迪，以及结论为什么会反过来。",
+     "speak_en": "The advanced film covers area-weighted Rudy, and why conclusions can flip."
+    }
+   ]
+  }
+ ]
+}

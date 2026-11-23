@@ -1,0 +1,7 @@
+{
+ "engine": "Kokoro-82M via kokoro-onnx (offline, Apache-2.0 weights)",
+ "zh": "zf_039 · kokoro-v1.1-zh · misaki[zh] G2P · speed 1.0",
+ "en": "af_heart · kokoro-v1.0 · espeak-ng G2P · speed 0.95",
+ "zhVoice": "zf_039",
+ "enVoice": "af_heart"
+}

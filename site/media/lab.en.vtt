@@ -1,0 +1,38 @@
+WEBVTT
+
+w01-1
+00:00:00.600 --> 00:00:06.950
+This is the lab. It opens on the teacher's spread layout: a demand map with capacity 2.
+
+w02-1
+00:00:07.750 --> 00:00:13.800
+Click a net: its box and selected tiles light up, with each tile's share written inside.
+
+w03-1
+00:00:14.600 --> 00:00:20.550
+Drag a pin. Move A to x = 3 and the whole map is recomputed on the spot.
+
+w04-1
+00:00:21.350 --> 00:00:27.700
+Or use the keyboard: select a pin and press the arrow keys; Undo steps back at any time.
+
+w05-1
+00:00:28.500 --> 00:00:32.500
+Add nets one by one, and watch the demand accumulate.
+
+w06-1
+00:00:33.300 --> 00:00:40.250
+Switch layers to see ratio and overflow. Change capacity: demand stays, overflow moves.
+
+w07-1
+00:00:41.050 --> 00:00:46.700
+While watching, press Try this frame, and the lab takes the frame's actual coordinates.
+
+w08-1
+00:00:47.500 --> 00:00:52.850
+Challenges check your actual layout in the lab; any correct arrangement passes.
+
+w09-1
+00:00:53.650 --> 00:00:59.100
+Finally, download the Python pack, fill in the functions, and check them with the script.
+

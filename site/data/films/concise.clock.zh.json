@@ -1,0 +1,290 @@
+{
+ "id": "concise.zh",
+ "film": "concise",
+ "lang": "zh",
+ "provisional": false,
+ "scriptSha256": "2338507c48b2989e910abd344afc059c0376fae928bce3eab8ce1fd76db9f976",
+ "kind": "voice",
+ "rule": {
+  "pause": 0.55,
+  "offset": 0.2,
+  "minLine": 1.6,
+  "lead": 0.6,
+  "tail": 0.8,
+  "lastTail": 2.5
+ },
+ "duration": 157.15,
+ "segments": [
+  {
+   "id": "k01",
+   "chapter": "01",
+   "start": 0,
+   "end": 11.5,
+   "sceneEnd": 12.3,
+   "lines": [
+    {
+     "start": 0.6,
+     "end": 6.85,
+     "voice": "media-source/voice/concise-k01-1-zh.m4a",
+     "voiceAt": 0.8,
+     "voiceDuration": 5.7
+    },
+    {
+     "start": 6.85,
+     "end": 11.5,
+     "voice": "media-source/voice/concise-k01-2-zh.m4a",
+     "voiceAt": 7.05,
+     "voiceDuration": 4.1
+    }
+   ]
+  },
+  {
+   "id": "k02",
+   "chapter": "01",
+   "start": 12.3,
+   "end": 26.55,
+   "sceneEnd": 27.35,
+   "lines": [
+    {
+     "start": 12.3,
+     "end": 17.65,
+     "voice": "media-source/voice/concise-k02-1-zh.m4a",
+     "voiceAt": 12.5,
+     "voiceDuration": 4.8
+    },
+    {
+     "start": 17.65,
+     "end": 22.4,
+     "voice": "media-source/voice/concise-k02-2-zh.m4a",
+     "voiceAt": 17.85,
+     "voiceDuration": 4.2
+    },
+    {
+     "start": 22.4,
+     "end": 26.55,
+     "voice": "media-source/voice/concise-k02-3-zh.m4a",
+     "voiceAt": 22.6,
+     "voiceDuration": 3.6
+    }
+   ]
+  },
+  {
+   "id": "k03",
+   "chapter": "02",
+   "start": 27.35,
+   "end": 42.3,
+   "sceneEnd": 43.1,
+   "lines": [
+    {
+     "start": 27.35,
+     "end": 32.7,
+     "voice": "media-source/voice/concise-k03-1-zh.m4a",
+     "voiceAt": 27.55,
+     "voiceDuration": 4.8
+    },
+    {
+     "start": 32.7,
+     "end": 37.75,
+     "voice": "media-source/voice/concise-k03-2-zh.m4a",
+     "voiceAt": 32.9,
+     "voiceDuration": 4.5
+    },
+    {
+     "start": 37.75,
+     "end": 42.3,
+     "voice": "media-source/voice/concise-k03-3-zh.m4a",
+     "voiceAt": 37.95,
+     "voiceDuration": 4
+    }
+   ]
+  },
+  {
+   "id": "k04",
+   "chapter": "03",
+   "start": 43.1,
+   "end": 61.95,
+   "sceneEnd": 62.75,
+   "lines": [
+    {
+     "start": 43.1,
+     "end": 51.15,
+     "voice": "media-source/voice/concise-k04-1-zh.m4a",
+     "voiceAt": 43.3,
+     "voiceDuration": 7.5
+    },
+    {
+     "start": 51.15,
+     "end": 56.8,
+     "voice": "media-source/voice/concise-k04-2-zh.m4a",
+     "voiceAt": 51.35,
+     "voiceDuration": 5.1
+    },
+    {
+     "start": 56.8,
+     "end": 61.95,
+     "voice": "media-source/voice/concise-k04-3-zh.m4a",
+     "voiceAt": 57,
+     "voiceDuration": 4.6
+    }
+   ]
+  },
+  {
+   "id": "k05",
+   "chapter": "03",
+   "start": 62.75,
+   "end": 77.9,
+   "sceneEnd": 78.7,
+   "lines": [
+    {
+     "start": 62.75,
+     "end": 67.9,
+     "voice": "media-source/voice/concise-k05-1-zh.m4a",
+     "voiceAt": 62.95,
+     "voiceDuration": 4.6
+    },
+    {
+     "start": 67.9,
+     "end": 72.55,
+     "voice": "media-source/voice/concise-k05-2-zh.m4a",
+     "voiceAt": 68.1,
+     "voiceDuration": 4.1
+    },
+    {
+     "start": 72.55,
+     "end": 77.9,
+     "voice": "media-source/voice/concise-k05-3-zh.m4a",
+     "voiceAt": 72.75,
+     "voiceDuration": 4.8
+    }
+   ]
+  },
+  {
+   "id": "k06",
+   "chapter": "04",
+   "start": 78.7,
+   "end": 97.3,
+   "sceneEnd": 98.1,
+   "lines": [
+    {
+     "start": 78.7,
+     "end": 86.7,
+     "voice": "media-source/voice/concise-k06-1-zh.m4a",
+     "voiceAt": 78.9,
+     "voiceDuration": 6.8
+    },
+    {
+     "start": 86.7,
+     "end": 91.35,
+     "voice": "media-source/voice/concise-k06-2-zh.m4a",
+     "voiceAt": 86.9,
+     "voiceDuration": 4.1
+    },
+    {
+     "start": 91.35,
+     "end": 97.3,
+     "voice": "media-source/voice/concise-k06-3-zh.m4a",
+     "voiceAt": 91.55,
+     "voiceDuration": 5.4
+    }
+   ]
+  },
+  {
+   "id": "k07",
+   "chapter": "05",
+   "start": 98.1,
+   "end": 115.55,
+   "sceneEnd": 116.35,
+   "lines": [
+    {
+     "start": 98.1,
+     "end": 103.95,
+     "voice": "media-source/voice/concise-k07-1-zh.m4a",
+     "voiceAt": 98.3,
+     "voiceDuration": 5.3
+    },
+    {
+     "start": 103.95,
+     "end": 109.9,
+     "voice": "media-source/voice/concise-k07-2-zh.m4a",
+     "voiceAt": 104.15,
+     "voiceDuration": 5.4
+    },
+    {
+     "start": 109.9,
+     "end": 115.55,
+     "voice": "media-source/voice/concise-k07-3-zh.m4a",
+     "voiceAt": 110.1,
+     "voiceDuration": 5.1
+    }
+   ]
+  },
+  {
+   "id": "k08",
+   "chapter": "06",
+   "start": 116.35,
+   "end": 136.2,
+   "sceneEnd": 137,
+   "lines": [
+    {
+     "start": 116.35,
+     "end": 121.9,
+     "voice": "media-source/voice/concise-k08-1-zh.m4a",
+     "voiceAt": 116.55,
+     "voiceDuration": 5
+    },
+    {
+     "start": 121.9,
+     "end": 130.85,
+     "voice": "media-source/voice/concise-k08-2-zh.m4a",
+     "voiceAt": 122.1,
+     "voiceDuration": 8.4
+    },
+    {
+     "start": 130.85,
+     "end": 136.2,
+     "voice": "media-source/voice/concise-k08-3-zh.m4a",
+     "voiceAt": 131.05,
+     "voiceDuration": 4.8
+    }
+   ]
+  },
+  {
+   "id": "k09",
+   "chapter": "06",
+   "start": 137,
+   "end": 154.65,
+   "sceneEnd": 157.15,
+   "lines": [
+    {
+     "start": 137,
+     "end": 142.95,
+     "voice": "media-source/voice/concise-k09-1-zh.m4a",
+     "voiceAt": 137.2,
+     "voiceDuration": 5.4
+    },
+    {
+     "start": 142.95,
+     "end": 149.1,
+     "voice": "media-source/voice/concise-k09-2-zh.m4a",
+     "voiceAt": 143.15,
+     "voiceDuration": 5.6
+    },
+    {
+     "start": 149.1,
+     "end": 154.65,
+     "voice": "media-source/voice/concise-k09-3-zh.m4a",
+     "voiceAt": 149.3,
+     "voiceDuration": 5
+    }
+   ]
+  }
+ ],
+ "violations": [],
+ "voices": {
+  "engine": "Kokoro-82M via kokoro-onnx (offline, Apache-2.0 weights)",
+  "zh": "zf_039 · kokoro-v1.1-zh · misaki[zh] G2P · speed 1.0",
+  "en": "af_heart · kokoro-v1.0 · espeak-ng G2P · speed 0.95",
+  "zhVoice": "zf_039",
+  "enVoice": "af_heart"
+ }
+}

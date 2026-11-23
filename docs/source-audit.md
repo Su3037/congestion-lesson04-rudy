@@ -30,4 +30,8 @@ Not read directly; its factor table is taken from DREAMPlace's `parameters.h`, w
 
 ## GateUltra/vlsi-course-director @ dca1c25d (MIT)
 
-Read `HTML_STUDIO_GUIDE.md`, `shared-architecture.md`, `tooling.md` and the starter. Adopted: pure domain module, shared board, explicit timeline with `stateAt(t)`, `window.ready` / `window.clock` / `window.renderAt`, frame capture at `i / fps`. Not adopted: the per-cue edge-tts narration recipe (`audio-captions.md`), which the instructor criticised in earlier feedback ("machine voice", "tts"). No GateUltra code is copied.
+Read `HTML_STUDIO_GUIDE.md`, `shared-architecture.md`, `tooling.md` and the starter. Adopted: pure domain module, shared board, explicit timeline with `stateAt(t)`, `window.ready` / `window.clock` / `window.renderAt`, frame capture at `i / fps`. Not adopted: the per-cue edge-tts narration recipe (`audio-captions.md`), which the instructor criticised in earlier feedback ("machine voice", "tts"). The narration here uses Kokoro-82M offline, a whole line per take (`docs/voice-casting.md`). No GateUltra code is copied.
+
+## The author's earlier lessons (house style)
+
+`Su3037/placement-lab02-hpwl` and `su3037/learning-clustering`, same author. The page structure, theme, film formats, clocks, renderer, player and slide builder of this lesson were ported from the HPWL lesson at the owner's request (`docs/decision-log.md` D14).

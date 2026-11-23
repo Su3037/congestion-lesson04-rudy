@@ -1,14 +1,26 @@
-# Licences and credits
+# Notice
 
-| What | Licence | Notes |
-| --- | --- | --- |
-| New code (`site/js/`, `scripts/`, `oracles/` except the upstream excerpts, `tests/`, `python/*.py`, `voice/*.py`, `voice/*.sh`) | MIT (`LICENSE`) | |
-| New teaching content (page text, film script and captions, slides, challenges, quiz, narration, docs) | CC BY 4.0 | © 2026 Su3037 |
-| Example data `site/data/fixture.json`, `python/fixture.json`, and the classroom model they implement | CC BY 4.0 | Adapted from Yongfu Li, [eda-learning](https://github.com/yongfu-li/eda-learning) `courses/learn_congestion` @ 003bcd4. Changes: cell widths dropped, presets renamed, a boundary preset added. |
-| `research/teacher/` | CC BY 4.0 (`research/teacher/LICENSE`) | Unmodified snapshots of the teacher's files, kept as evidence and run as an oracle. |
-| `research/upstream/dreamplace/` | BSD-3-Clause (its `LICENSE`) | DREAMPlace @ 4adf954, unmodified, used only as a test oracle. |
-| `research/upstream/openroad/` | BSD-3-Clause (its `LICENSE`) | OpenROAD @ 7b26270, unmodified, used only as a test oracle. |
-| Fonts Noto Sans SC, JetBrains Mono (`dist/fonts/`, from npm `@fontsource`) | SIL OFL 1.1 | Licence files ship next to the fonts. |
-| Film audio | none | The film has no narration and no music. |
+The random-access render contract (`window.ready` + `window.renderAt(t)`, frame `i` at `t = i/fps`, FFmpeg encode,
+JSON render record) and the domain / board / timeline / scene / lab layering were adapted from
+GateUltra/vlsi-course-director (commit `dca1c25`), which is distributed under this licence:
 
-Paper: P. Spindler and F. M. Johannes, DATE 2007, doi:10.1109/DATE.2007.364463. Cited, not redistributed; no figures reproduced.
+> MIT License
+>
+> Copyright (c) 2026 GateUltra and contributors
+>
+> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+> documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+> the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+> to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+>
+> The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+> the Software.
+>
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+> THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+> CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+> IN THE SOFTWARE.
+
+The implementation here (`scripts/render.mjs`, `site/render.html`, `site/js/*`) was written for this project in
+Node/ES modules; no file from that repository is included verbatim. Details: `docs/reference-adaptation.md`.

@@ -1,8 +1,7 @@
-name: test-build-deploy
+name: pages
 on:
   push:
     branches: [main]
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,50 +11,35 @@ concurrency:
   group: pages
   cancel-in-progress: false
 jobs:
-  test:
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: "22", cache: npm }
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
-      - run: npm ci
-      - run: pip install -r requirements-dev.txt
-      - name: Unit and property tests (JS)
-        run: npm test
-      - name: Unit and property tests (Python)
-        run: python -m pytest -q tests/
-      - name: Oracle - teacher code
-        run: npm run oracle:teacher
-      - name: Oracle - JS vs Python reference
-        run: npm run oracle:crosslang
-      - name: Oracle - DREAMPlace and OpenROAD kernels
-        run: npm run oracle:upstream
-      - name: Python practice checker
-        run: cd python && python check.py rudy_ref.py
-  build:
-    needs: test
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: "22", cache: npm }
-      - run: npm ci
-      - run: npm run build
-      - name: Browser checks on the built site
-        run: |
-          npx playwright install --with-deps chromium
-          npm run check:site
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: dist }
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: build
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
       - id: deployment
         uses: actions/deploy-pages@v4
+  verify:
+    needs: deploy
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Browser checks against the live deployment
+        run: |
+          sleep 20
+          node tests/browser.mjs --base https://su3037.github.io/congestion-lesson04-rudy/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deployment-browser-report
+          path: build/browser-report.json

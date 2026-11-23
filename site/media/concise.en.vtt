@@ -1,0 +1,106 @@
+WEBVTT
+
+k01-1
+00:00:00.600 --> 00:00:06.450
+In a few minutes: RUDY, a way to estimate where wires will crowd before routing.
+
+k01-2
+00:00:06.450 --> 00:00:10.200
+RUDY stands for Rectangular Uniform wire DensitY.
+
+k02-1
+00:00:11.000 --> 00:00:15.850
+The teacher's example: a 12 by 8 chip, six pins, six nets.
+
+k02-2
+00:00:15.850 --> 00:00:19.800
+The six nets' HPWL adds up to 34.
+
+k02-3
+00:00:19.800 --> 00:00:23.113
+But a total cannot say where the wires will crowd.
+
+k03-1
+00:00:23.913 --> 00:00:29.263
+So cut the chip into 4 by 2 routing tiles, each 3 wide and 4 tall.
+
+k03-2
+00:00:29.263 --> 00:00:33.713
+Demand is stored as demand[x][y]: column first, then row.
+
+k03-3
+00:00:33.713 --> 00:00:37.463
+What a tile can carry is its capacity; here it is 2.
+
+k04-1
+00:00:38.263 --> 00:00:45.813
+Take one net, ABCD: its box is 7 wide and 4 tall, so HPWL = 11.
+
+k04-2
+00:00:45.813 --> 00:00:53.863
+The lower-left corner (1, 1) is in tile (0, 0); the upper-right (8, 5) is in tile (2, 1).
+
+k04-3
+00:00:53.863 --> 00:00:59.213
+Every tile between the two corners is selected: 3 by 2, six tiles.
+
+k05-1
+00:01:00.013 --> 00:01:04.663
+RUDY shares the 11 equally: each tile gets 11/6.
+
+k05-2
+00:01:04.663 --> 00:01:08.713
+Tile indices are rounded down, then clamped into the grid.
+
+k05-3
+00:01:08.713 --> 00:01:13.763
+So a point exactly on x = 3 belongs to the tile on its right.
+
+k06-1
+00:01:14.563 --> 00:01:22.563
+Add the six nets in turn: AB, CD, AC, BD, ABCD, EF.
+
+k06-2
+00:01:22.563 --> 00:01:26.513
+Until the last one is in, the map is only a partial sum.
+
+k06-3
+00:01:26.513 --> 00:01:31.863
+The eight tiles add up to 34, exactly the total HPWL.
+
+k07-1
+00:01:32.663 --> 00:01:39.213
+Against capacity 2: demand over capacity is the ratio, and the excess is overflow.
+
+k07-2
+00:01:39.213 --> 00:01:44.763
+Six tiles overflow: 22 in total, the worst one 14/3 over.
+
+k07-3
+00:01:44.763 --> 00:01:50.713
+Set capacity to 1: no demand changes, but total overflow becomes 28.
+
+k08-1
+00:01:51.513 --> 00:01:57.263
+In code, validate first: the grid, the capacity and the pins must all be valid.
+
+k08-2
+00:01:57.263 --> 00:02:05.113
+Then for each net, find its box and its corner tiles, and add HPWL equally to every tile between.
+
+k08-3
+00:02:05.113 --> 00:02:11.263
+Finally read ratio and overflow against capacity; capacity never changes demand.
+
+k09-1
+00:02:12.063 --> 00:02:17.313
+Remember: one net, one box, and the box's tiles share its length equally.
+
+k09-2
+00:02:17.313 --> 00:02:24.663
+Demand is conserved: the map sums to total HPWL; overflow depends on capacity.
+
+k09-3
+00:02:24.663 --> 00:02:29.813
+The advanced film covers area-weighted RUDY, and why conclusions can flip.
+

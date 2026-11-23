@@ -1,0 +1,130 @@
+WEBVTT
+
+s01-1
+00:00:00.400 --> 00:00:04.400
+Before building roads, guess: where will it jam?
+
+s01-2
+00:00:04.400 --> 00:00:08.533
+All we know is where each trip starts and ends.
+
+s02-1
+00:00:11.050 --> 00:00:16.294
+Spread each trip evenly over the blocks its rectangle covers.
+
+s03-1
+00:00:17.710 --> 00:00:22.066
+Before routing a chip, we ask the same question.
+
+s03-2
+00:00:22.066 --> 00:00:27.310
+Pins are the stops; a net is a group to be linked.
+
+s03-3
+00:00:27.310 --> 00:00:30.999
+No wires yet; where will they crowd?
+
+s05-1
+00:00:40.900 --> 00:00:44.922
+One net: 7 wide, 4 tall, HPWL = 11.
+
+s05-2
+00:00:44.922 --> 00:00:48.056
+Its box covers 6 tiles.
+
+s06-1
+00:00:49.360 --> 00:00:51.860
+Each tile gets 11 ÷ 6.
+
+s07-1
+00:00:53.600 --> 00:00:58.600
+Six nets, stacked one by one.
+
+s07-2
+00:00:58.600 --> 00:01:01.200
+The brighter, the more crowded.
+
+s08-1
+00:01:03.450 --> 00:01:07.694
+Each tile carries 2; the rest is overflow.
+
+s09-1
+00:01:08.500 --> 00:01:11.744
+Spread out: total overflow 22.
+
+s09-2
+00:01:11.744 --> 00:01:14.989
+The worst tile is 14/3 over.
+
+s09-3
+00:01:14.989 --> 00:01:19.122
+Demand adds up to 34: the total wirelength.
+
+s10-1
+00:01:20.460 --> 00:01:23.193
+Crowd everything into the middle?
+
+s10-2
+00:01:23.193 --> 00:01:26.193
+Total overflow drops to 5.
+
+s10-3
+00:01:26.193 --> 00:01:29.693
+But one tile must carry 7.
+
+s11-1
+00:01:37.490 --> 00:01:40.512
+A smaller total, a sharper hotspot.
+
+s12-1
+00:01:42.800 --> 00:01:47.156
+A pin sits on a tile edge: which tile?
+
+s12-2
+00:01:47.156 --> 00:01:51.656
+Round down: x = 3 belongs to the tile on the right.
+
+s12-3
+00:01:51.656 --> 00:01:55.344
+Write the rule down, and the numbers repeat.
+
+s13-1
+00:01:59.570 --> 00:02:03.570
+Tools share demand by overlap area.
+
+s13-2
+00:02:03.570 --> 00:02:08.703
+Then spread has the worse tile: 5.54 vs 5.
+
+s14-1
+00:02:14.460 --> 00:02:17.927
+A real chip has millions of nets.
+
+s14-2
+00:02:17.927 --> 00:02:22.727
+A placer redraws this map at every step.
+
+s14-3
+00:02:22.727 --> 00:02:27.749
+So it must be cheap: one box per net.
+
+s14-4
+00:02:27.749 --> 00:02:31.882
+It does not route, and ignores layers and direction.
+
+s14-5
+00:02:31.882 --> 00:02:36.016
+It is a weather forecast before routing.
+
+s14-6
+00:02:36.016 --> 00:02:40.149
+After real routing, will the hotspots still be there?
+
+s15-1
+00:02:50.900 --> 00:02:55.033
+Go to the lab and drag these pins yourself.
+
+s15-2
+00:02:55.033 --> 00:03:00.833
+Music: We Never (Remix) · Hi Noise / Qiucheng
+

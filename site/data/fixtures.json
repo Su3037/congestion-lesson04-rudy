@@ -1,0 +1,39 @@
+{
+ "note": "Single data source for the site, the films, the slides and the Python pack. The teacher example is transcribed from yongfu-li/eda-learning courses/learn_congestion/common/tiny_cong.json @ 003bcd49 (numbers only; credited, not relicensed). Pins are points; cell widths are dropped. Net ids name their pins.",
+ "fixtures": {
+  "teacher": {
+   "title": {"zh": "老师的 tiny_cong（6 个引脚，6 个线网）", "en": "The teacher's tiny_cong (6 pins, 6 nets)"},
+   "chip": {"W": 12, "H": 8},
+   "gcell": {"nx": 4, "ny": 2, "cellW": 3, "cellH": 4},
+   "capacity": 2,
+   "cells": ["A", "B", "C", "D", "E", "F"],
+   "nets": [
+    {"id": "AB", "pins": ["A", "B"]},
+    {"id": "CD", "pins": ["C", "D"]},
+    {"id": "AC", "pins": ["A", "C"]},
+    {"id": "BD", "pins": ["B", "D"]},
+    {"id": "ABCD", "pins": ["A", "B", "C", "D"]},
+    {"id": "EF", "pins": ["E", "F"]}
+   ],
+   "placements": {
+    "spread": {"A": {"x": 1, "y": 1}, "B": {"x": 8, "y": 1}, "C": {"x": 1, "y": 5}, "D": {"x": 8, "y": 5}, "E": {"x": 5, "y": 3}, "F": {"x": 6, "y": 3}},
+    "cluster": {"A": {"x": 4, "y": 2}, "B": {"x": 5, "y": 2}, "C": {"x": 4, "y": 3}, "D": {"x": 5, "y": 3}, "E": {"x": 4.5, "y": 2.5}, "F": {"x": 5.5, "y": 2.5}},
+    "boundary": {"A": {"x": 3, "y": 1}, "B": {"x": 8, "y": 1}, "C": {"x": 1, "y": 5}, "D": {"x": 8, "y": 5}, "E": {"x": 5, "y": 3}, "F": {"x": 6, "y": 3}}
+   }
+  },
+  "edge": {
+   "title": {"zh": "边界规则（一个两引脚线网）", "en": "Boundary rule (one two-pin net)"},
+   "chip": {"W": 12, "H": 8},
+   "gcell": {"nx": 4, "ny": 2, "cellW": 3, "cellH": 4},
+   "capacity": 2,
+   "cells": ["P", "Q"],
+   "nets": [{"id": "PQ", "pins": ["P", "Q"]}],
+   "placements": {
+    "inside": {"P": {"x": 1, "y": 1}, "Q": {"x": 2.5, "y": 1}},
+    "online": {"P": {"x": 1, "y": 1}, "Q": {"x": 3, "y": 1}},
+    "rightEdge": {"P": {"x": 10, "y": 7}, "Q": {"x": 12, "y": 8}},
+    "same": {"P": {"x": 4, "y": 2}, "Q": {"x": 4, "y": 2}}
+   }
+  }
+ }
+}

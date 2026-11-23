@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import * as R from "../site/js/rudy.js";
+import * as R from "./adapter.mjs";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const harness = path.join(root, ".cache/upstream/harness");
 if (!fs.existsSync(harness)) execFileSync("bash", [path.join(root, "oracles/upstream/run.sh")], { stdio: "inherit" });

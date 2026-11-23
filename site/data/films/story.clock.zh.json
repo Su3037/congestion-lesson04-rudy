@@ -1,0 +1,332 @@
+{
+ "id": "story.zh",
+ "film": "story",
+ "lang": "zh",
+ "provisional": false,
+ "scriptSha256": "9fdb793cef60581454365ed96557341b5e6ffd19784f696f2e86e25be1316b77",
+ "kind": "music",
+ "music": "wenever",
+ "rule": {
+  "zhBase": 0.8,
+  "zhRate": 4.5,
+  "enBase": 0.8,
+  "enRate": 15,
+  "minLine": 2,
+  "tail": 0.8,
+  "lastTail": 2.5,
+  "lead": 0.6
+ },
+ "duration": 189.823,
+ "segments": [
+  {
+   "id": "s01",
+   "chapter": "00",
+   "start": 0,
+   "end": 8.533,
+   "sceneEnd": 10.75,
+   "lines": [
+    {
+     "start": 0.4,
+     "end": 4.4
+    },
+    {
+     "start": 4.4,
+     "end": 8.533
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "chapter": "00",
+   "start": 10.75,
+   "end": 16.294,
+   "sceneEnd": 17.41,
+   "lines": [
+    {
+     "start": 11.05,
+     "end": 16.294
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "chapter": "01",
+   "start": 17.41,
+   "end": 30.999,
+   "sceneEnd": 32.03,
+   "lines": [
+    {
+     "start": 17.71,
+     "end": 22.066
+    },
+    {
+     "start": 22.066,
+     "end": 27.31
+    },
+    {
+     "start": 27.31,
+     "end": 30.999
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "chapter": "01",
+   "start": 32.03,
+   "end": 38.33,
+   "sceneEnd": 40.6,
+   "lines": [
+    {
+     "start": 32.33,
+     "end": 38.33
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "chapter": "01",
+   "start": 40.6,
+   "end": 48.056,
+   "sceneEnd": 49.06,
+   "lines": [
+    {
+     "start": 40.9,
+     "end": 44.922
+    },
+    {
+     "start": 44.922,
+     "end": 48.056
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "chapter": "01",
+   "start": 49.06,
+   "end": 51.86,
+   "sceneEnd": 53.3,
+   "lines": [
+    {
+     "start": 49.36,
+     "end": 51.86
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "chapter": "02",
+   "start": 53.3,
+   "end": 61.7,
+   "sceneEnd": 63.15,
+   "lines": [
+    {
+     "start": 53.6,
+     "end": 58.6
+    },
+    {
+     "start": 58.6,
+     "end": 61.2
+    },
+    {
+     "start": 61.2,
+     "end": 61.7
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "chapter": "02",
+   "start": 63.15,
+   "end": 67.694,
+   "sceneEnd": 68.2,
+   "lines": [
+    {
+     "start": 63.45,
+     "end": 67.694
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "chapter": "02",
+   "start": 68.2,
+   "end": 79.122,
+   "sceneEnd": 80.16,
+   "lines": [
+    {
+     "start": 68.5,
+     "end": 71.744
+    },
+    {
+     "start": 71.744,
+     "end": 74.989
+    },
+    {
+     "start": 74.989,
+     "end": 79.122
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "chapter": "03",
+   "start": 80.16,
+   "end": 89.693,
+   "sceneEnd": 97.19,
+   "lines": [
+    {
+     "start": 80.46,
+     "end": 83.193
+    },
+    {
+     "start": 83.193,
+     "end": 86.193
+    },
+    {
+     "start": 86.193,
+     "end": 89.693
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "chapter": "03",
+   "start": 97.19,
+   "end": 100.512,
+   "sceneEnd": 102.5,
+   "lines": [
+    {
+     "start": 97.49,
+     "end": 100.512
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "chapter": "04",
+   "start": 102.5,
+   "end": 115.344,
+   "sceneEnd": 119.27,
+   "lines": [
+    {
+     "start": 102.8,
+     "end": 107.156
+    },
+    {
+     "start": 107.156,
+     "end": 111.656
+    },
+    {
+     "start": 111.656,
+     "end": 115.344
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "chapter": "04",
+   "start": 119.27,
+   "end": 129.203,
+   "sceneEnd": 134.16,
+   "lines": [
+    {
+     "start": 119.57,
+     "end": 123.57
+    },
+    {
+     "start": 123.57,
+     "end": 128.703
+    },
+    {
+     "start": 128.703,
+     "end": 129.203
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "chapter": "05",
+   "start": 134.16,
+   "end": 160.149,
+   "sceneEnd": 170.6,
+   "lines": [
+    {
+     "start": 134.46,
+     "end": 137.927
+    },
+    {
+     "start": 137.927,
+     "end": 142.727
+    },
+    {
+     "start": 142.727,
+     "end": 147.749
+    },
+    {
+     "start": 147.749,
+     "end": 151.882
+    },
+    {
+     "start": 151.882,
+     "end": 156.016
+    },
+    {
+     "start": 156.016,
+     "end": 160.149
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "chapter": "05",
+   "start": 170.6,
+   "end": 180.833,
+   "sceneEnd": 189.823,
+   "lines": [
+    {
+     "start": 170.9,
+     "end": 175.033
+    },
+    {
+     "start": 175.033,
+     "end": 180.833
+    }
+   ]
+  }
+ ],
+ "violations": [],
+ "track": {
+  "title": "We Never (Remix)（若如初见）",
+  "artist": "Hi Noise / 秋成",
+  "sections": {
+   "intro_end": 10.75,
+   "groove": 17.41,
+   "roll": 32.03,
+   "lock": 34.17,
+   "fill1": 49.06,
+   "fill1_end": 51.18,
+   "accent": 63.15,
+   "fill2": 66.08,
+   "fill2_end": 68.2,
+   "phrase": 80.16,
+   "phrase_end": 85.22,
+   "breath": 97.19,
+   "reentry": 102.5,
+   "fill3": 117.14,
+   "fill3_end": 119.27,
+   "fill4": 134.16,
+   "outro": 136.16,
+   "quiet": 170.6,
+   "end": 189.82
+  },
+  "hits": [
+   32.034,
+   32.303,
+   32.832,
+   33.101,
+   33.361,
+   33.63,
+   33.9
+  ]
+ }
+}

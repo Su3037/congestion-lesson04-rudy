@@ -11,4 +11,4 @@
 9. Cluster vs spread: max vs total disagree; why total overflow tracks wirelength here.
 10. Model P vs model A: the max-overflow ranking flips.
 11. Limits: not a router, directions and layers, RISA, units, validation against a router.
-Film scenes follow the same order (13 scenes, 261.9 s). Slides: 12 pages. Challenges: 7. Concept quiz: 8 items.
+Four films follow this order at different depths: 科普 (15 cues, 3:10, music), 精讲 (9 cues, narrated), 进阶 (9 cues, reading), 实验演示 (9 cues, narrated walkthrough). Slides: 13 pages. Challenges: 7. Concept quiz: 6 items. Python practice: 5 tasks.

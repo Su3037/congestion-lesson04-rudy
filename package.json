@@ -2,26 +2,28 @@
   "name": "congestion-lesson04-rudy",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "description": "RUDY congestion estimate: a reproducible classroom lesson (Congestion Lesson 04)",
+  "description": "RUDY congestion teaching module: shared domain/board/timeline, four deterministic code-drawn films (zh + en) with music and voiceover, interactive lab.",
   "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs tests/legacy/*.test.mjs && python3 -m pytest -q tests/",
+    "test:browser": "node tests/browser.mjs",
+    "stills": "node scripts/render.mjs --stills",
+    "films": "node scripts/build-films.mjs",
+    "walk": "node scripts/record-walk.mjs",
+    "film": "node scripts/render.mjs --full",
+    "serve": "node scripts/serve.mjs 8800 /congestion-lesson04-rudy/",
     "oracle:teacher": "node oracles/teacher_diff.mjs",
     "oracle:crosslang": "node oracles/crosslang.mjs",
+    "oracle:edge": "node oracles/edge_cases.mjs",
     "oracle:upstream": "bash oracles/upstream/run.sh",
-    "build": "node scripts/build_site.mjs",
-    "serve": "node scripts/serve.mjs",
-    "check:site": "node scripts/check_site.mjs",
-    "render:sample": "node scripts/render_film.mjs --cut sample",
-    "render:film": "node scripts/render_film.mjs --cut full",
-    "render:stills": "node scripts/render_film.mjs --stills",
-    "slides:pdf": "node scripts/export_slides.mjs"
+    "voice": "python3 scripts/voice/render-voice-kokoro.py --zh-voice zf_039 && python3 scripts/voice/asr_check.py"
   },
   "devDependencies": {
-    "@fontsource/jetbrains-mono": "^5.2.8",
-    "@fontsource/noto-sans-sc": "^5.3.1",
-    "axe-core": "4.10.2",
     "fast-check": "3.23.2",
     "playwright": "1.63.0"
   }

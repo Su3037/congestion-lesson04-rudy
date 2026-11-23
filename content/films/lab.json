@@ -1,0 +1,176 @@
+{
+ "id": "lab",
+ "kind": "voice",
+ "title": {
+  "zh": "实验演示 · RUDY 实验台",
+  "en": "Lab walkthrough · The RUDY lab"
+ },
+ "chapters": {
+  "01": {
+   "zh": "实验台",
+   "en": "The lab"
+  },
+  "02": {
+   "zh": "改变布局",
+   "en": "Change the layout"
+  },
+  "03": {
+   "zh": "从影片进入",
+   "en": "From the film"
+  },
+  "04": {
+   "zh": "挑战与 Python",
+   "en": "Challenges and Python"
+  }
+ },
+ "cues": [
+  {
+   "id": "w01",
+   "chapter": "01",
+   "title": {
+    "zh": "打开实验台",
+    "en": "Open the lab"
+   },
+   "lines": [
+    {
+     "zh": "这是实验台。打开时载入老师的展开布局：需求图，容量 2。",
+     "en": "This is the lab. It opens on the teacher's spread layout: a demand map with capacity 2.",
+     "hold": 3
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w02",
+   "chapter": "01",
+   "title": {
+    "zh": "选择线网",
+    "en": "Pick a net"
+   },
+   "lines": [
+    {
+     "zh": "点一个线网，它的包围盒和选中的格子会高亮，每格加多少也写在格子里。",
+     "en": "Click a net: its box and selected tiles light up, with each tile's share written inside.",
+     "hold": 3
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w03",
+   "chapter": "02",
+   "title": {
+    "zh": "拖动引脚",
+    "en": "Drag a pin"
+   },
+   "lines": [
+    {
+     "zh": "直接拖动引脚。把 A 拖到 x = 3，整张图当场重算。",
+     "en": "Drag a pin. Move A to x = 3 and the whole map is recomputed on the spot.",
+     "hold": 4,
+     "speak_zh": "直接拖动引脚。把 A 拖到 x 等于 3，整张图当场重算。",
+     "speak_en": "Drag a pin. Move A to x equals three, and the whole map is recomputed on the spot."
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w04",
+   "chapter": "02",
+   "title": {
+    "zh": "键盘",
+    "en": "Keyboard"
+   },
+   "lines": [
+    {
+     "zh": "也可以用键盘：选中引脚后按方向键；撤销随时退回上一步。",
+     "en": "Or use the keyboard: select a pin and press the arrow keys; Undo steps back at any time.",
+     "hold": 3.5
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w05",
+   "chapter": "02",
+   "title": {
+    "zh": "逐个加入线网",
+    "en": "Add nets one by one"
+   },
+   "lines": [
+    {
+     "zh": "“逐个加入线网”一次加一个，看需求怎样累加。",
+     "en": "Add nets one by one, and watch the demand accumulate.",
+     "hold": 4,
+     "speak_zh": "逐个加入线网，一次加一个，看需求怎样累加。"
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w06",
+   "chapter": "02",
+   "title": {
+    "zh": "容量与图层",
+    "en": "Capacity and layers"
+   },
+   "lines": [
+    {
+     "zh": "切换图层看比值和溢出；改容量，需求不变，溢出跟着变。",
+     "en": "Switch layers to see ratio and overflow. Change capacity: demand stays, overflow moves.",
+     "hold": 4
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w07",
+   "chapter": "03",
+   "title": {
+    "zh": "试试这一帧",
+    "en": "Try this frame"
+   },
+   "lines": [
+    {
+     "zh": "看片时随时按“在实验台中打开此帧”，实验台会接过画面上的真实坐标。",
+     "en": "While watching, press Try this frame, and the lab takes the frame's actual coordinates.",
+     "hold": 4,
+     "speak_zh": "看片时随时按，在实验台中打开此帧，实验台会接过画面上的真实坐标。"
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w08",
+   "chapter": "04",
+   "title": {
+    "zh": "挑战",
+    "en": "Challenges"
+   },
+   "lines": [
+    {
+     "zh": "挑战检查你在实验台里的真实布局，不同的正确摆法都能通过。",
+     "en": "Challenges check your actual layout in the lab; any correct arrangement passes.",
+     "hold": 4
+    }
+   ],
+   "scene": "walk"
+  },
+  {
+   "id": "w09",
+   "chapter": "04",
+   "title": {
+    "zh": "Python 练习",
+    "en": "Python practice"
+   },
+   "lines": [
+    {
+     "zh": "最后下载 Python 练习包，补全函数，用检查脚本验证。",
+     "en": "Finally, download the Python pack, fill in the functions, and check them with the script.",
+     "hold": 3.5
+    }
+   ],
+   "scene": "walk"
+  }
+ ]
+}

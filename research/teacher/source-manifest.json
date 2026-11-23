@@ -1,0 +1,373 @@
+[
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/README.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "22a3415b37725c20aa3cef73616b918fa478fbebc758bf9907ca2506df80bee0",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/README.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/LICENSE",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "cfbe8cb2a3b7ee0077d7d1abb7eb253e2cfc0752a977cf7081608b26079cf6bf",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/LICENSE"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/docs/MODULES.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "f15f8173103a028ae644693f7ae565de7a18ee1757568907a8827680d6166e51",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/docs/MODULES.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/docs/SCOPE.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "b417c9f761b7a4607a2b9a03a35913223a7d1bab8c3a5473df190dc2ecebb709",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/docs/SCOPE.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/docs/TWO_TRACKS.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "66e83de0e1cfdd550c67613a59ce890c609707f78c1abb678342c9489b989cae",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/docs/TWO_TRACKS.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/common/README.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "f520c7af0d8fe08f5d8ba0023d3b3ddbe93163b71d361b98b05bc9034e55528c",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/common/README.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/common/__init__.py",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "fab112ecc3d76155a1df7f24009b10d4aa841ce406edf981667ad712edc7c253",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/common/__init__.py"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/common/congestionutil.py",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "dfbb22c367e10f4e04b27e7bcdd8ed4a49a39d76035087d1d70e4a9b7456d450",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/common/congestionutil.py"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/common/solvers.py",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "2039a7fea14a35fdaca75f64012d2f0ad0c05cc8d7d1cde9f401ab865707e606",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/common/solvers.py"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/common/test_solvers.py",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "560f90372aac353cdf52de00c4588854e19c9f80f09e618ed8f246485dedcc22",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/common/test_solvers.py"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/common/tiny_cong.json",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "b150f3245aa1ff4a1b430aafdab4b90b3f0839b3b5192b0b981e1e807e6adadf",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/common/tiny_cong.json"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/CHECKLIST.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "bc4904300676585ff4dcc4e3c25587a96e2154721aaf2a48fa1bee7e620db503",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/CHECKLIST.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/EXAMPLES.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "4132614fb987baa62850a708b3c3e323e66c3d3f2f72cccb82507584e35b835c",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/EXAMPLES.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/README.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "360188ca561d26eb055e5c68f1078891f76ebb206f61edca2b34fb5f7a86ffda",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/README.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/assets/STEPS.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "5b7f428de1b383bae7e486270990db64911abd596291339f00a3f664e22d72c9",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/assets/STEPS.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/examples/tiny_cong.json",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "b150f3245aa1ff4a1b430aafdab4b90b3f0839b3b5192b0b981e1e807e6adadf",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/examples/tiny_cong.json"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/outline.yaml",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "4f8c604632589d31c61ba76ab8b812e1e0e4a3b619507d191823f2f6f76c7ad4",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/outline.yaml"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/quiz.json",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "5c47d7dc2e964aadaa2e75a3d0a87302be43837344a9456435c15a8d7db7b9f9",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/quiz.json"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/slides.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "a13def65a3e725303f20e44b235dd939d00c0c7a6a14a1166cee4379c6d76262",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/slides.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "courses/learn_congestion/module02-01-rudy-estimate/transcript.md",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "2a3fdc267b3e577dcdf137c961d8d83c870db56ebfbf50133b980a08df439e18",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/courses/learn_congestion/module02-01-rudy-estimate/transcript.md"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/courses/learn_congestion/labs/rudy-estimate/index.html",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "8862914f5046bcb85518e82fa38e219803170ca80606ab31cb4a07aab1facf3e",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/courses/learn_congestion/labs/rudy-estimate/index.html"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/tools/rudy-estimate/index.html",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "99cb6e67da823a93328732fe6efe0d7a353c41601aef2e24267e29cebbfc069d",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/tools/rudy-estimate/index.html"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/tools/rudy-estimate/rudy-estimate.js",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "7803a379ff1b7dde79d98bbdcd54ef4e652c63350a020872f5dc50640901b588",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/tools/rudy-estimate/rudy-estimate.js"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/assets/congestion-algo-advanced.js",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "10808783b299ea14da19f96396cd655b97949286c338879a9fe4d9aa81e23521",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/assets/congestion-algo-advanced.js"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/assets/congestion-benchmark-app.js",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "cdf48c167996afa6782770227fd3fd8b82a8740d4aec5774e57e31cd63bee498",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/assets/congestion-benchmark-app.js"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/assets/congestion-benchmark-core.js",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "962cbb65abd5543ade6e0d7813b28790ea9a0f437fcbd39d4e02c131e1b4d83e",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/assets/congestion-benchmark-core.js"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/assets/congestion-core.js",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "f22d4f03f47590cd6532621017723e9cab917cfa288f05331267203dee5ce904",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/assets/congestion-core.js"
+  },
+  {
+    "repository": "yongfu-li/eda-learning",
+    "path": "platform/assets/interactive-congestion-lab.js",
+    "commit": "003bcd49e3794e6cfd2680181cdbd347d673ad07",
+    "sha256": "17ef85c3f529bd0350f7987a3057d1eb8c2cc66038f30417803729bb6bbd2609",
+    "url": "https://github.com/yongfu-li/eda-learning/blob/003bcd49e3794e6cfd2680181cdbd347d673ad07/platform/assets/interactive-congestion-lab.js"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "LICENSE",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "ce8f2572c6e80756e91e1459b876c538c29107531128c3227bb44063af77a48e",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/LICENSE"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "docs/HTML_STUDIO_GUIDE.md",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "bb78c8f70be71b3dd9afe8382f546c8227c373c388a1b2b972c62b859d605e39",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/docs/HTML_STUDIO_GUIDE.md"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "docs/HTML_STUDIO_VALIDATION.md",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "9e6208abd62211961fd9d6a7606e3047e75901534db6a338344720147b87d625",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/docs/HTML_STUDIO_VALIDATION.md"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/references/audio-captions.md",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "bcdcac52488a60b1aa26c76b7f90c277365e78fb4e927774ed3a02c2280ea0fd",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/references/audio-captions.md"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/references/tooling.md",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "2534bb67fb61334e09aa0a8f8850cfd0920b55389530dad32857992e9e7598b8",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/references/tooling.md"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/references/shared-architecture.md",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "e377b0905963d1d1d8bab1851b68fd5ff9e921fe4eb9f3cf3a496dc3c3172dc0",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/references/shared-architecture.md"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/references/site-verification.md",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "465476bd1a1b37e3130a219be9419457627c6568bce875f26bb9b663a611c958",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/references/site-verification.md"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/scripts/init_course.py",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "5d40f9107bd92ddaede40069a55b5db0bb40cb26c08e66a08fa96d8018cbbce6",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/scripts/init_course.py"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/scripts/validate_media.py",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "b6e298ad680f32be4c221c0ffefca4071b90078de77cb9e369afdaeca0c79646",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/scripts/validate_media.py"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/scripts/check_tooling.py",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "264b18d589e18aa6c8906cfc67bbdbe592dcea7f3acf82edda165ecd85afa20f",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/scripts/check_tooling.py"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/scripts/retime_video.py",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "2e668d4b3b32a81a20822ad348da44760daf9920f27b698b54f768f50161331e",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/scripts/retime_video.py"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/scripts/serve_site.py",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "09a4ca632f1d119b4b3346bae6f1d48293693558388f86cc73bbfa110fb9d196",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/scripts/serve_site.py"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/scripts/render_html.py",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "883bff84fd0d728a432b0ea7b61f29c97b2d95e4db600368eaea03ab9b0bf907",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/scripts/render_html.py"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/check_browser.py",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "f11a3343396443261c5797b60d6603aeab69ef94880c3f356a543dcf42eadab0",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/check_browser.py"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/index.html",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "23c6dfc7f1284aa76abc4057c9ca8d98250ca76d632f28ec5f0c41e2b1765171",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/index.html"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/styles.css",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "4a215c92f1f92b86fca53762cb4eb23dbc2dfd3e976eff0accd7abb676781975",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/styles.css"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/scene.js",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "f7ee6a376f3ee707b3e55a6d80869e72896d27968bf1e4521e5d97dd1f025de6",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/scene.js"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/board.js",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "03f526833f448305a4d54a21cdddb5ecbcda2dba0db61c6b3e0bdd54b0c6ec3b",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/board.js"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/domain.js",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "59cde9cc8259b22df0a552dbc0864d4bf7cf3abc2ccec596bbd02b6879f2d10a",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/domain.js"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/timeline.js",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "36c898ff0dff1612e4d89bd20400dc86451bf503426e48b4f0eea6ed71c22812",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/timeline.js"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/check.mjs",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "ec8aab6ec577d035e74ebcb0bc723a1a5b6296ef2ea82b6925c5d53d4f04923a",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/check.mjs"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/render.html",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "c3199f58fde4354404959e022ffdcc4e36ce60738829155f4b2b65378e0ce92e",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/render.html"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/app.js",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "6fe850eab16c1f7dcfc27f0ea52a8b65586b05fe35de50fc8decb081b80ebb54",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/app.js"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/content/script.json",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "21dd5fe26b98c6add6e4a0575790c16afbaf6ff8a741fbc7494c8bd07af531b3",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/content/script.json"
+  },
+  {
+    "repository": "GateUltra/vlsi-course-director",
+    "path": "vlsi-html-course-studio/assets/starter/content/demo-clock.json",
+    "commit": "dca1c25d2d8e6a944536274d05878904a2cc4d5f",
+    "sha256": "2e0ec9565908d6841637d5646f8bbae7c069b88521df8b1c26720c59ea7c12fa",
+    "url": "https://github.com/GateUltra/vlsi-course-director/blob/dca1c25d2d8e6a944536274d05878904a2cc4d5f/vlsi-html-course-studio/assets/starter/content/demo-clock.json"
+  }
+]

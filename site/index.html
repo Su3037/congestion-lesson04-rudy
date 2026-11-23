@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RUDY 拥塞估计 · 拥塞第四课</title>
+<meta name="description" content="RUDY 拥塞估计：用外接框把每条 net 的线长分到布线格，和容量比较，并看清不同拥塞指标为什么会给出不同结论。可交互实验、代码绘制影片、课件与 Python 练习。">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<header class="top"><nav aria-label="目录">
+  <a class="brand" href="#top">RUDY · 拥塞第四课</a>
+  <a href="#concepts">概念</a><a href="#reading">图解</a><a href="#code">伪代码</a><a href="#film-sec">影片</a><a href="#lab-sec">实验室</a><a href="#challenges">挑战</a><a href="#python">Python</a><a href="#slides">课件</a><a href="#checks">核对</a><a href="#refs">参考</a><a href="en/" lang="en">English</a>
+</nav></header>
+<main id="top">
+<h1>RUDY 拥塞估计</h1>
+<p class="lead">布局完成、还没布线的时候，怎么快速知道哪里会挤？RUDY 把每条 net 的线长均匀摊到它外接框下面的布线格里，加起来得到需求图，再和每格的容量比较。本课从一条 net 算起，到六条 net 的完整需求，再到两个会“打架”的拥塞指标。</p>
+<div class="callout model"><b>本课的模型边界。</b>主线是老师课程中的<b>离散等份模型 P</b>：每条 net 的 HPWL 除以选中的格数，平均加给每格。它不是 DATE 2007 论文里按面积计算的连续密度，也不是布线器。为了对照，本课另设<b>模型 A（按重叠面积）</b>，始终单独标注，并与 DREAMPlace、OpenROAD 的原始代码核对过。需求和容量都用同一种<b>教学单位</b>，不是真实的布线轨道数。</div>
+
+<section class="sec" id="concepts">
+<h2>先把词说清楚</h2>
+<dl class="defs grid2">
+  <div><dt>pin（引脚）</dt><dd>需要被连起来的点。本课把 pin 当作芯片上的一个坐标 (x, y)。</dd>
+  <dt>net（线网）</dt><dd>一组必须连通的 pin。本课有 6 条 net，其中一条有 4 个 pin。</dd>
+  <dt>外接框 bbox</dt><dd>包住一条 net 全部 pin 的最小水平矩形。</dd>
+  <dt>HPWL（半周长线长）</dt><dd>外接框的宽 + 高。它是这条 net 线长的快速估计。</dd>
+  <dt>GCell（布线格）</dt><dd>把芯片切成的粗网格。本课芯片 12×8，切成 4 列 × 2 行，每格 3×4。</dd></div>
+  <div><dt>需求 demand</dt><dd>估计会穿过某一格的布线量，存成 demand[x][y]：先列号，后行号。</dd>
+  <dt>容量 capacity</dt><dd>一格最多能容纳的布线量。本课默认 C = 2，和需求同一种教学单位。</dd>
+  <dt>比值 ratio</dt><dd>需求 ÷ 容量。大于 1 表示超出。</dd>
+  <dt>溢出 overflow</dt><dd>max(0, 需求 − 容量)。只计超出的部分，不会是负数。</dd>
+  <dt>热点 hotspot</dt><dd>需求或比值最高的格。最大溢出看的是热点有多严重。</dd></div>
+</dl>
+</section>
+
+<section class="sec" id="reading">
+<h2>图解：从一条 net 到完整需求图</h2>
+<h3>1. 只看总线长，看不出位置</h3>
+<p>下图是老师给的展开布局：六个 pin、六条 net。虚线只表示谁和谁相连，<b>不是走线</b>。六条 net 的 HPWL 加起来是 34。可是同样的 34，可以集中在一处，也可以分散在全芯片。布线会不会失败，取决于“挤在哪里”。</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","show":{"tiles":false}}'><figcaption>展开布局：A(1,1) B(8,1) C(1,5) D(8,5) E(5,3) F(6,3)。</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","show":{"flylines":false}}'><figcaption>4×2 个布线格。格号 = (floor(x÷3), floor(y÷4))，越界时夹回网格。</figcaption></figure>
+</div>
+<h3>2. 一条 net：框、HPWL、选中格</h3>
+<p>先看 net A–B。外接框从 x=1 到 x=8，高度为 0，所以 HPWL = 7 + 0 = 7。左端 x=1 落在第 0 列，右端 x=8 落在 floor(8÷3) = 第 2 列。老师源码的规则是：<b>两个角各自取格号，再选中两者之间的全部格（含两端）</b>。这里选中 (0,0)、(1,0)、(2,0) 三格，每格分到 7 ÷ 3 = 7/3 ≈ 2.33。</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","net":0,"only":true,"dims":true}'><figcaption>net A–B：选中 3 格，每格 +7/3。水平 net 在这个模型里完全合法。</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","net":0,"only":true,"layer":"overflow","upto":1,"show":{"tiles":false,"bbox":false}}'><figcaption>只加了第一条（部分累加）。7/3 已经超过容量 2，每格溢出 1/3。</figcaption></figure>
+</div>
+<h3>3. 边界：正好落在格线上的 pin</h3>
+<p>floor(3 ÷ 3) = 1，所以 x = 3 的点属于第 1 列。于是从 (1,1) 到 (3,1) 的 net 选中两格，每格 1，尽管第 1 列和这条线的重叠长度是 0。这是<b>“含两端格”规则</b>，不是“按面积相交”。在实验室里拖动 pin 越过格线，选中格会突然跳变，这是规则本身的结果。另外，两个 pin 重合时 HPWL = 0，份额也是 0：不会凭空加需求，也不会除以零。</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"nets":[["A","B"]],"positions":{"A":{"x":1,"y":1},"B":{"x":3,"y":1}},"net":0,"layer":"demand","dims":true}'><figcaption>(1,1)–(3,1)：两格各得 1。</figcaption></figure>
+<figure data-needs-fixture data-fig='{"nets":[["A","B"]],"positions":{"A":{"x":1,"y":1},"B":{"x":3,"y":1}},"net":0,"layer":"demand","model":"A"}'><figcaption>同一条 net 在模型 A（按面积）下：第 1 列得 0，全部 2 给第 0 列。</figcaption></figure>
+</div>
+<h3>4. 逐条累加，得到完整需求图</h3>
+<p>每次计算都从全零矩阵开始，再把六条 net 的份额逐条加上。下表是每条 net 的贡献：</p>
+<table><tr><th>net</th><th>HPWL</th><th>选中格</th><th>每格份额</th></tr>
+<tr><th>A–B</th><td>7</td><td>3</td><td>7/3</td></tr><tr><th>C–D</th><td>7</td><td>3</td><td>7/3</td></tr><tr><th>A–C</th><td>4</td><td>2</td><td>2</td></tr><tr><th>B–D</th><td>4</td><td>2</td><td>2</td></tr><tr><th>A–B–C–D</th><td>11</td><td>6</td><td>11/6</td></tr><tr><th>E–F</th><td>1</td><td>2</td><td>1/2</td></tr></table>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"demand","upto":3}'><figcaption>部分累加：前 3 条。这还不是最终需求。</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"demand"}'><figcaption>完整需求：demand[0] = [37/6, 37/6]，demand[1] = [14/3, 25/6]，demand[2] = [20/3, 37/6]，demand[3] = [0, 0]。</figcaption></figure>
+</div>
+<p>八格加起来正好是 34，等于 HPWL 总和。在模型 P 中这永远成立：每条 net 的 HPWL 被完整地分到它的格里，不多也不少。</p>
+<h3>5. 容量：只改比值和溢出</h3>
+<p>C = 2 时，6 格溢出，总溢出 22，最大溢出 14/3 ≈ 4.67。把容量改成 1，<b>需求矩阵一个数都不变</b>；变的只是比值和溢出：总溢出 28，最大 17/3，仍是 6 格。</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"ratio","capacity":2}'><figcaption>需求 / 容量，C = 2。</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow","capacity":1}'><figcaption>溢出，C = 1。需求与左图相同。</figcaption></figure>
+</div>
+<h3>6. 两个指标会“打架”</h3>
+<p>老师还给了一个中心聚集的摆法：所有 pin 挤在格 (1,0) 里，需求全落在一格，等于 7。两张图用<b>同一把固定色尺</b>，同色就是同值；本课从不按各自最大值拉伸颜色。</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"cluster","layer":"overflow"}'><figcaption>聚集，C = 2：总溢出 5，最大 5，1 格。</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow"}'><figcaption>展开，C = 2：总溢出 22，最大 14/3，6 格。</figcaption></figure>
+</div>
+<table><tr><th>C = 2</th><th>聚集</th><th>展开</th><th>哪个更低</th></tr>
+<tr><th>总 HPWL（= 需求总和）</th><td>7</td><td>34</td><td>聚集</td></tr>
+<tr><th>总溢出</th><td>5</td><td>22</td><td>聚集</td></tr>
+<tr><th>溢出格数</th><td>1</td><td>6</td><td>聚集</td></tr>
+<tr><th>最挤 25% 格的平均比值</th><td>1.75</td><td>3.21</td><td>聚集</td></tr>
+<tr><th>最大溢出</th><td>5</td><td>14/3 ≈ 4.67</td><td>展开（略低）</td></tr></table>
+<p>所以不能说展开“全面更好”。它只让最严重的那一格稍微好一点，却把负担摊到了六格。还有一个更深的原因：在模型 P 里，总需求就是总 HPWL，所以<b>总溢出在很大程度上是在量线长</b>。说“更好”之前，先说按哪个指标。</p>
+<h3>7. 换一种 RUDY，结论还会变</h3>
+<p>真实工具（DREAMPlace 的 <code>rudy</code> 算子、OpenROAD 的 <code>grt::Rudy</code>）按<b>重叠面积</b>分配：一格得到 HPWL × 重叠面积 ÷ 框面积。这就是本课的模型 A。同样的展开布局，模型 A 的最大溢出是 5.54，反而比聚集的 5 更高。也就是说，在模型 A 下，连最大溢出也偏向聚集。RUDY 是一族方法：先说清用的是哪一种。</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow","model":"P"}'><figcaption>模型 P（等份），展开，C = 2。</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow","model":"A"}'><figcaption>模型 A（按面积），展开，C = 2。同一色尺。</figcaption></figure>
+</div>
+<h3>8. 局限</h3>
+<ul>
+<li>RUDY 是布线前的快速估计，不是布线结果，更不是可制造性签核。</li>
+<li>真实容量分水平、垂直方向，还分金属层；DREAMPlace 就分别给出水平和垂直两张图。</li>
+<li>多 pin 的 net 实际线长比 HPWL 长。RISA（Cheng, ICCAD 1994）按 pin 数乘系数，例如 4 个 pin 为 1.0828；模型 P 和 A 都没乘。</li>
+<li>它预测得准不准，要拿布线器的结果来比较（例如每格的 Spearman 相关），本课只在“核对”一节说明做法。</li>
+</ul>
+</section>
+
+<section class="sec" id="code">
+<h2>伪代码（模型 P）</h2>
+<pre class="code" tabindex="0">1  demand ← 全零矩阵 [nx][ny]            # 每次计算都重新开始
+2  for 每条 net:
+3    box ← 所有 pin 的外接矩形
+4    hpwl ← 框宽 + 框高                    # 水平/竖直 net 合法；重合 pin 时为 0
+5    tiles ← 两角所在格之间的全部格（含两端）  # floor 后夹回网格
+6    share ← hpwl ÷ |tiles|                # 除以格数，不是除以面积
+7    每个 t ∈ tiles: demand[t] += share
+8  overflow[t] ← max(0, demand[t] − C)     # C 必须 > 0；容量不改变 demand</pre>
+<p>输入先校验：未知 pin、空 net、非有限坐标、芯片外坐标、网格与芯片尺寸不符、容量 ≤ 0，都会被拒绝并给出原因，而不是算出 NaN 或一张“看起来很安全”的全零图。</p>
+</section>
+
+<section class="sec" id="film-sec">
+<h2>影片（无声，中文字幕）</h2>
+<p>这是代码绘制的影片：下面的播放器和 MP4 用的是同一个渲染函数 <code>renderAt(t)</code>。随时暂停，按“试试这一帧”，就能把这一刻的 pin、网格、容量、模型和选中的 net 原样带进实验室。</p>
+<div id="film" data-needs-fixture>
+  <div class="stage" role="img" aria-label="影片画面"></div>
+  <div class="controls">
+    <button type="button" data-film="play">播放</button>
+    <input type="range" min="0" step="0.01" value="0" aria-label="时间">
+    <span class="time"></span>
+    <select name="cut" aria-label="版本"><option value="full">正片</option><option value="sample">小样</option></select>
+    <button type="button" data-film="try">试试这一帧</button>
+    <span class="tried" aria-live="polite"></span>
+  </div>
+</div>
+<details><summary>MP4 版本（可下载）</summary>
+<video controls preload="none" poster="media/poster.zh.jpg">
+  <source src="media/rudy-full.zh.mp4" type="video/mp4">
+  <track kind="captions" srclang="en" label="English" src="media/rudy-full.en.vtt">
+</video>
+<p class="small">中文字幕已烧录在画面中；英文字幕可在播放器中打开。<a href="media/rudy-full.zh.mp4" download>下载正片 MP4</a> · <a href="media/rudy-sample.zh.mp4" download>下载 41 秒小样</a> · <a href="media/rudy-full.zh.vtt">中文 VTT</a> · <a href="media/rudy-full.en.vtt">英文 VTT</a></p>
+</details>
+</section>
+
+<section class="sec" id="lab-sec">
+<h2>实验室</h2>
+<p>拖动 pin（或用键盘、直接输入坐标），切换模型和热图，逐条累加，改容量。热图和数值表永远同步，色尺固定。点击任意一格，查看它的需求来自哪些 net。</p>
+<div id="lab" data-needs-fixture></div>
+</section>
+
+<section class="sec" id="challenges">
+<h2>挑战</h2>
+<p>评分看的是实验室的真实状态或你算出的数，允许多种正确答案。每题有两级提示；看过答案后完成的题会单独记录。</p>
+<div id="challenge-list" data-needs-fixture></div>
+</section>
+
+<section class="sec" id="python">
+<h2>Python 练习</h2>
+<p>不装 Python 也能学完本课；想自己实现的话，下载下面的文件：</p>
+<ul>
+<li><a href="downloads/starter.py">starter.py</a>：要你补全的 <code>tile_of</code>、<code>demand_p</code>、<code>overflow_metrics</code>。</li>
+<li><a href="downloads/check.py">check.py</a>：检查器，输出 PASS / INCOMPLETE / FAIL。</li>
+<li><a href="downloads/fixture.json">fixture.json</a> 与 <a href="downloads/expected.json">expected.json</a>：老师的示例和期望结果（分数形式）。</li>
+<li><a href="downloads/rudy_ref.py">rudy_ref.py</a>：用精确分数实现的参考答案（先自己做）。</li>
+</ul>
+<pre class="code" tabindex="0">python3 check.py            # 检查 starter.py
+python3 check.py rudy_ref.py  # 检查参考实现</pre>
+</section>
+
+<section class="sec" id="slides">
+<h2>课件</h2>
+<div id="slides-viewer" data-needs-fixture>
+  <div class="bar"><button type="button" data-s="prev">上一页</button><span class="pageno"></span><button type="button" data-s="next">下一页</button> <a href="slides/rudy-slides.zh.pdf">下载 PDF</a></div>
+  <div class="slide"></div>
+  <p class="notes"></p>
+</div>
+</section>
+
+<section class="sec" id="checks">
+<h2>怎么知道这些数是对的</h2>
+<p>本课的数字不是只靠作者自己检查。仓库里的 <code>oracles/</code> 和 <code>tests/</code> 每次构建都会重跑：</p>
+<ul>
+<li><b>老师的原始代码</b>：未修改的 <code>congestion-core.js</code> 和 <code>solvers.py</code> 与本课模型 P 对比，5000 组 + 1000 组生成用例，0 个不一致。</li>
+<li><b>精确分数</b>：Python 参考实现用 <code>fractions.Fraction</code>，示例结果与 37/6、14/3、25/6、20/3 完全相等。</li>
+<li><b>真实工具的代码</b>：从 DREAMPlace（4adf954）和 OpenROAD（7b26270）原文件中原样摘出 RUDY 核心，编译后与模型 A 逐格比较：1489 组和 739 组，0 个不一致。</li>
+<li><b>性质测试</b>：fast-check 与 Hypothesis 检查需求守恒、容量不改需求、net 顺序无关、线性、镜像对称（模型 P 只在不压格线时成立）。</li>
+<li><b>JS 与 Python 交叉</b>：2000 组随机网格、非整数和边界坐标、线状 net、重合 pin 和错误输入，0 个不一致。</li>
+</ul>
+<p>各实现在边界情况下的差异见仓库里的 <a href="https://github.com/Su3037/congestion-lesson04-rudy/blob/main/docs/edge-cases.md">docs/edge-cases.md</a>：例如水平线状 net，模型 P 给正值，DREAMPlace 给 0，OpenROAD 直接跳过。</p>
+</section>
+
+<section class="sec" id="refs">
+<h2>参考、授权与复现</h2>
+<ul>
+<li>P. Spindler, F. M. Johannes. <i>Fast and Accurate Routing Demand Estimation for Efficient Routability-driven Placement.</i> DATE 2007. <a href="https://doi.org/10.1109/DATE.2007.364463">doi:10.1109/DATE.2007.364463</a>。本课未转载论文图片。</li>
+<li>C.-L. E. Cheng. <i>RISA: Accurate and Efficient Placement Routability Modeling.</i> ICCAD 1994（多 pin 系数）。</li>
+<li>课程来源：Yongfu Li, <a href="https://github.com/yongfu-li/eda-learning/tree/main/courses/learn_congestion/module02-01-rudy-estimate">eda-learning · module02-01-rudy-estimate</a>（固定版本 003bcd4），CC BY 4.0。本课改编了示例数据和课堂模型，重写了讲解、动画、实验和练习。</li>
+<li>对照代码：<a href="https://github.com/limbo018/DREAMPlace">DREAMPlace</a>（BSD-3-Clause），<a href="https://github.com/The-OpenROAD-Project/OpenROAD">OpenROAD</a>（BSD-3-Clause）。</li>
+<li>新代码 MIT，新教学内容 CC BY 4.0。字体 Noto Sans SC 与 JetBrains Mono，SIL OFL 1.1。影片无配音、无音乐。</li>
+<li>源码与复现步骤：<a href="https://github.com/Su3037/congestion-lesson04-rudy">github.com/Su3037/congestion-lesson04-rudy</a>（见 docs/REPRODUCIBILITY.md）。</li>
+</ul>
+</section>
+</main>
+<footer>拥塞估计第四课 · RUDY。为 <a href="https://github.com/yongfu-li/eda-learning/issues/42">yongfu-li/eda-learning#42</a> 制作。</footer>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+ "dreamplace_commit": "4adf954dfce83712c4cbee541b5208ca315fda11",
+ "openroad_commit": "7b26270095b3c710bdbac50d09af1767e2265572",
+ "seed": 7,
+ "dreamplace": {
+  "cases": 1489,
+  "mismatches": 0,
+  "max_rel_err": 9.630473799772149e-14
+ },
+ "openroad": {
+  "cases": 739,
+  "mismatches": 0,
+  "max_rel_err": 1.5593749991271721e-7,
+  "note": "float32 kernel; tolerance 1e-5 relative"
+ }
+}

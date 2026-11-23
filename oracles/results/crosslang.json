@@ -1,0 +1,9 @@
+{
+ "seed": 424242,
+ "cases": 2000,
+ "agree": 2000,
+ "disagree": 0,
+ "both_rejected": 200,
+ "max_abs_diff": 3.552713678800501e-15,
+ "first_bad": []
+}

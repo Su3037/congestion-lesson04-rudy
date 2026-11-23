@@ -1,0 +1,367 @@
+{
+ "base": "http://localhost:8979/congestion-lesson04-rudy/",
+ "passed": 72,
+ "failed": [],
+ "results": [
+  {
+   "name": "zh: page loads with no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: no failed requests on load",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: all reading figures drawn",
+   "ok": true,
+   "detail": "14 figures"
+  },
+  {
+   "name": "zh: \"Try this frame\" at full 200.5s transfers the exact state",
+   "ok": true,
+   "detail": "compare"
+  },
+  {
+   "name": "zh: \"Try this frame\" at full 61.2s transfers the exact state",
+   "ok": true,
+   "detail": "onenet"
+  },
+  {
+   "name": "zh: \"Try this frame\" at sample 20s transfers the exact state",
+   "ok": true,
+   "detail": "onenet"
+  },
+  {
+   "name": "zh: \"Try this frame\" at full 95s transfers the exact state",
+   "ok": true,
+   "detail": "boundary"
+  },
+  {
+   "name": "zh: \"Try this frame\" at full 7.3s transfers the exact state",
+   "ok": true,
+   "detail": "title"
+  },
+  {
+   "name": "zh: capacity 2→1 leaves demand unchanged, total overflow 28",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: capacity 0 shows an error instead of numbers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: keyboard moves a pin 0.5",
+   "ok": true,
+   "detail": "E.x = 5.5"
+  },
+  {
+   "name": "zh: dragging a pin moves it",
+   "ok": true,
+   "detail": "F.x = 8.4"
+  },
+  {
+   "name": "zh: tile (1,0) breakdown lists its 3 nets",
+   "ok": true,
+   "detail": "3 items"
+  },
+  {
+   "name": "zh: stepping back marks the map partial",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: malformed JSON reports an error",
+   "ok": true,
+   "detail": "JSON 无法解析：Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+  },
+  {
+   "name": "zh: unknown pin is rejected visibly",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: challenge c1-tile accepts a valid solution",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: challenge c7-boundary accepts a valid solution",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: challenge c6-both accepts a valid solution",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: challenge c6 rejects the untouched start",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: challenge c5 accepts C=5",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: challenge c3 accepts 14/3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: solving after viewing the solution is tracked separately",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: slide page number matches the slide",
+   "ok": true,
+   "detail": "2 / 12"
+  },
+  {
+   "name": "zh: axe-core has no serious/critical violations",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "zh: no horizontal scroll at 375 px",
+   "ok": true,
+   "detail": "scrollWidth 375"
+  },
+  {
+   "name": "zh: touch tap on the board leaves the lab working",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "zh: loads with reduced motion",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: page loads with no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: no failed requests on load",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: all reading figures drawn",
+   "ok": true,
+   "detail": "14 figures"
+  },
+  {
+   "name": "en: \"Try this frame\" at full 200.5s transfers the exact state",
+   "ok": true,
+   "detail": "compare"
+  },
+  {
+   "name": "en: \"Try this frame\" at full 61.2s transfers the exact state",
+   "ok": true,
+   "detail": "onenet"
+  },
+  {
+   "name": "en: \"Try this frame\" at sample 20s transfers the exact state",
+   "ok": true,
+   "detail": "onenet"
+  },
+  {
+   "name": "en: \"Try this frame\" at full 95s transfers the exact state",
+   "ok": true,
+   "detail": "boundary"
+  },
+  {
+   "name": "en: \"Try this frame\" at full 7.3s transfers the exact state",
+   "ok": true,
+   "detail": "title"
+  },
+  {
+   "name": "en: capacity 2→1 leaves demand unchanged, total overflow 28",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: capacity 0 shows an error instead of numbers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: keyboard moves a pin 0.5",
+   "ok": true,
+   "detail": "E.x = 5.5"
+  },
+  {
+   "name": "en: dragging a pin moves it",
+   "ok": true,
+   "detail": "F.x = 8.4"
+  },
+  {
+   "name": "en: tile (1,0) breakdown lists its 3 nets",
+   "ok": true,
+   "detail": "3 items"
+  },
+  {
+   "name": "en: stepping back marks the map partial",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: malformed JSON reports an error",
+   "ok": true,
+   "detail": "Could not parse JSON: Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+  },
+  {
+   "name": "en: unknown pin is rejected visibly",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: challenge c1-tile accepts a valid solution",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: challenge c7-boundary accepts a valid solution",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: challenge c6-both accepts a valid solution",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: challenge c6 rejects the untouched start",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: challenge c5 accepts C=5",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: challenge c3 accepts 14/3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: solving after viewing the solution is tracked separately",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: slide page number matches the slide",
+   "ok": true,
+   "detail": "2 / 12"
+  },
+  {
+   "name": "en: axe-core has no serious/critical violations",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "en: no horizontal scroll at 375 px",
+   "ok": true,
+   "detail": "scrollWidth 375"
+  },
+  {
+   "name": "en: touch tap on the board leaves the lab working",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "en: loads with reduced motion",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "renderer exposes window.clock",
+   "ok": true,
+   "detail": "{\"fps\":30,\"duration\":261.94444444444446,\"cut\":\"full\",\"lang\":\"zh\"}"
+  },
+  {
+   "name": "renderAt is repeatable, order-independent and fresh-page stable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "renderAt returns a snapshot matching stateAt",
+   "ok": true,
+   "detail": "final"
+  },
+  {
+   "name": "asset media/rudy-full.zh.mp4",
+   "ok": true,
+   "detail": "200 3716573 bytes"
+  },
+  {
+   "name": "asset media/rudy-full.en.mp4",
+   "ok": true,
+   "detail": "200 3681547 bytes"
+  },
+  {
+   "name": "asset media/rudy-sample.zh.mp4",
+   "ok": true,
+   "detail": "200 613265 bytes"
+  },
+  {
+   "name": "asset media/rudy-full.zh.vtt",
+   "ok": true,
+   "detail": "200 4239 bytes"
+  },
+  {
+   "name": "asset media/rudy-full.en.vtt",
+   "ok": true,
+   "detail": "200 4178 bytes"
+  },
+  {
+   "name": "asset slides/rudy-slides.zh.pdf",
+   "ok": true,
+   "detail": "200 304315 bytes"
+  },
+  {
+   "name": "asset slides/rudy-slides.en.pdf",
+   "ok": true,
+   "detail": "200 203211 bytes"
+  },
+  {
+   "name": "asset downloads/check.py",
+   "ok": true,
+   "detail": "200 3423 bytes"
+  },
+  {
+   "name": "asset downloads/fixture.json",
+   "ok": true,
+   "detail": "200 1823 bytes"
+  },
+  {
+   "name": "asset fonts/fonts.css",
+   "ok": true,
+   "detail": "200 201286 bytes"
+  },
+  {
+   "name": "asset data/fixture.json",
+   "ok": true,
+   "detail": "200 1823 bytes"
+  },
+  {
+   "name": "asset media/poster.zh.jpg",
+   "ok": true,
+   "detail": "200 73658 bytes"
+  },
+  {
+   "name": "missing page returns 404 with a page",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

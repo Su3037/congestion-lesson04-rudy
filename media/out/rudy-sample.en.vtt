@@ -1,0 +1,37 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.233
+RUDY sample: one net's demand
+
+2
+00:00:04.633 --> 00:00:08.200
+Start with one net: A–B.
+
+3
+00:00:08.200 --> 00:00:13.100
+Its box is 7 wide and 0 tall, so HPWL is 7.
+
+4
+00:00:13.100 --> 00:00:18.889
+Left end x=1 is in column 0; right end x=8 is in column 2.
+
+5
+00:00:18.889 --> 00:00:23.344
+Every tile between them is selected: 3 tiles.
+
+6
+00:00:23.344 --> 00:00:27.356
+Each tile gets 7 ÷ 3, about 2.33.
+
+7
+00:00:27.956 --> 00:00:31.078
+Add 7/3 to each of the three tiles.
+
+8
+00:00:31.078 --> 00:00:35.533
+Against capacity 2, each is already 1/3 over.
+
+9
+00:00:35.533 --> 00:00:40.656
+That is overflow: max(0, demand − capacity).

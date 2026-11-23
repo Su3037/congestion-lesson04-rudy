@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RUDY Congestion Estimate · Lesson 4</title>
+<meta name="description" content="RUDY congestion estimate: spread each net's wirelength over the routing tiles under its bounding box, compare with capacity, and see why congestion statistics disagree. Live lab, code-drawn film, slides and Python practice.">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<header class="top"><nav aria-label="Contents">
+  <a class="brand" href="#top">RUDY · Congestion Lesson 4</a>
+  <a href="#concepts">Terms</a><a href="#reading">Reading</a><a href="#code">Pseudocode</a><a href="#film-sec">Film</a><a href="#lab-sec">Lab</a><a href="#challenges">Challenges</a><a href="#python">Python</a><a href="#slides">Slides</a><a href="#checks">Checks</a><a href="#refs">References</a><a href="../" lang="zh-CN">中文</a>
+</nav></header>
+<main id="top">
+<h1>RUDY congestion estimate</h1>
+<p class="lead">After placement and before routing, how do you find out quickly where wires will crowd? RUDY spreads each net's wirelength evenly over the routing tiles under its bounding box, sums the nets into a demand map, and compares each tile with its capacity. This lesson starts from one net, builds the full six-net map, and ends with two congestion statistics that disagree.</p>
+<div class="callout model"><b>Model boundary.</b> The main line is the teacher's <b>discrete equal-share model P</b>: each net's HPWL is divided by the number of selected tiles and added equally to each. It is not the continuous, area-based density of the DATE 2007 paper, and it is not a router. For comparison, a separate <b>model A (by overlap area)</b> is always labelled as such and has been checked against DREAMPlace and OpenROAD source code. Demand and capacity share one set of <b>teaching units</b>; they are not routing tracks.</div>
+
+<section class="sec" id="concepts">
+<h2>Terms first</h2>
+<dl class="defs grid2">
+  <div><dt>Pin</dt><dd>A point that must be connected. Here a pin is a coordinate (x, y) on the chip.</dd>
+  <dt>Net</dt><dd>A set of pins that must be connected together. There are 6 nets; one has 4 pins.</dd>
+  <dt>Bounding box (bbox)</dt><dd>The smallest axis-aligned rectangle containing all of a net's pins.</dd>
+  <dt>HPWL</dt><dd>Half-perimeter wirelength: box width + box height, a quick estimate of the net's wirelength.</dd>
+  <dt>GCell</dt><dd>A coarse routing tile. The 12 × 8 chip is cut into 4 columns × 2 rows of 3 × 4 tiles.</dd></div>
+  <div><dt>Demand</dt><dd>Estimated routing in a tile, stored as demand[x][y]: column first, then row.</dd>
+  <dt>Capacity</dt><dd>What a tile can hold. Default C = 2, in the same teaching units as demand.</dd>
+  <dt>Ratio</dt><dd>Demand ÷ capacity. Above 1 means over capacity.</dd>
+  <dt>Overflow</dt><dd>max(0, demand − capacity): only the excess, never negative.</dd>
+  <dt>Hotspot</dt><dd>The tile with the highest demand or ratio. Max overflow measures how bad the worst hotspot is.</dd></div>
+</dl>
+</section>
+
+<section class="sec" id="reading">
+<h2>Reading: from one net to the full demand map</h2>
+<h3>1. Total wirelength hides location</h3>
+<p>This is the teacher's spread placement: six pins, six nets. Dashed lines show which pins connect, <b>not routes</b>. The six nets' HPWL adds up to 34, but the same 34 could be packed into one spot or spread across the chip. Whether routing fails depends on where it crowds.</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","show":{"tiles":false}}'><figcaption>Spread placement: A(1,1) B(8,1) C(1,5) D(8,5) E(5,3) F(6,3).</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","show":{"flylines":false}}'><figcaption>4 × 2 routing tiles. tile = (floor(x/3), floor(y/4)), clamped to the grid.</figcaption></figure>
+</div>
+<h3>2. One net: box, HPWL, selected tiles</h3>
+<p>Take net A–B. Its box runs from x=1 to x=8 with zero height, so HPWL = 7 + 0 = 7. The left end is in column 0, the right end in column floor(8/3) = 2. The teacher's rule: <b>find each corner's tile, then select every tile between them, inclusive</b>. That gives (0,0), (1,0), (2,0), and each receives 7 ÷ 3 = 7/3 ≈ 2.33.</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","net":0,"only":true,"dims":true}'><figcaption>Net A–B: 3 tiles, +7/3 each. A horizontal net is perfectly valid in this model.</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","net":0,"only":true,"layer":"overflow","upto":1,"show":{"tiles":false,"bbox":false}}'><figcaption>First net only (a partial sum). 7/3 already exceeds capacity 2: overflow 1/3 per tile.</figcaption></figure>
+</div>
+<h3>3. Boundaries: a pin exactly on a tile edge</h3>
+<p>floor(3 / 3) = 1, so a point at x = 3 belongs to column 1. A net from (1,1) to (3,1) therefore selects two tiles, 1 each, even though column 1 overlaps the line by zero length. This is the <b>endpoint-tile rule</b>, not area intersection. Drag a pin across a tile edge in the lab and the selection jumps; that is the rule, not a glitch. Coincident pins give HPWL = 0 and a zero share: no invented demand and no division by zero.</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"nets":[["A","B"]],"positions":{"A":{"x":1,"y":1},"B":{"x":3,"y":1}},"net":0,"layer":"demand","dims":true}'><figcaption>(1,1)–(3,1): two tiles, 1 each.</figcaption></figure>
+<figure data-needs-fixture data-fig='{"nets":[["A","B"]],"positions":{"A":{"x":1,"y":1},"B":{"x":3,"y":1}},"net":0,"layer":"demand","model":"A"}'><figcaption>The same net under model A (by area): column 1 gets 0, column 0 gets all 2.</figcaption></figure>
+</div>
+<h3>4. Add the nets one by one</h3>
+<p>Every computation starts from a zero matrix and adds the six nets' shares in turn:</p>
+<table><tr><th>Net</th><th>HPWL</th><th>Tiles</th><th>Share each</th></tr>
+<tr><th>A–B</th><td>7</td><td>3</td><td>7/3</td></tr><tr><th>C–D</th><td>7</td><td>3</td><td>7/3</td></tr><tr><th>A–C</th><td>4</td><td>2</td><td>2</td></tr><tr><th>B–D</th><td>4</td><td>2</td><td>2</td></tr><tr><th>A–B–C–D</th><td>11</td><td>6</td><td>11/6</td></tr><tr><th>E–F</th><td>1</td><td>2</td><td>1/2</td></tr></table>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"demand","upto":3}'><figcaption>Partial sum, first 3 nets. Not the final demand.</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"demand"}'><figcaption>Full demand: demand[0] = [37/6, 37/6], demand[1] = [14/3, 25/6], demand[2] = [20/3, 37/6], demand[3] = [0, 0].</figcaption></figure>
+</div>
+<p>The eight tiles sum to exactly 34, the total HPWL. In model P this always holds: each net's HPWL is handed out in full to its tiles.</p>
+<h3>5. Capacity changes ratio and overflow only</h3>
+<p>At C = 2, six tiles overflow: total overflow 22, max 14/3 ≈ 4.67. Set C = 1 and <b>not one demand number changes</b>; only ratio and overflow do: total 28, max 17/3, still six tiles.</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"ratio","capacity":2}'><figcaption>Demand / capacity at C = 2.</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow","capacity":1}'><figcaption>Overflow at C = 1. Demand is the same as on the left.</figcaption></figure>
+</div>
+<h3>6. Two statistics disagree</h3>
+<p>The teacher also gives a centre-cluster placement: every pin sits in tile (1,0), so all demand lands in one tile, 7. Both maps use <b>one fixed legend</b>: the same colour means the same value. This lesson never rescales each map to its own maximum.</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"cluster","layer":"overflow"}'><figcaption>Cluster, C = 2: total overflow 5, max 5, one tile.</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow"}'><figcaption>Spread, C = 2: total overflow 22, max 14/3, six tiles.</figcaption></figure>
+</div>
+<table><tr><th>C = 2</th><th>Cluster</th><th>Spread</th><th>Lower</th></tr>
+<tr><th>Total HPWL (= sum of demand)</th><td>7</td><td>34</td><td>cluster</td></tr>
+<tr><th>Total overflow</th><td>5</td><td>22</td><td>cluster</td></tr>
+<tr><th>Tiles over capacity</th><td>1</td><td>6</td><td>cluster</td></tr>
+<tr><th>Mean ratio of worst 25% tiles</th><td>1.75</td><td>3.21</td><td>cluster</td></tr>
+<tr><th>Max overflow</th><td>5</td><td>14/3 ≈ 4.67</td><td>spread (slightly)</td></tr></table>
+<p>So the spread is not "better overall". It makes the single worst tile slightly better and spreads the burden over six tiles. There is a deeper reason too: in model P total demand equals total HPWL, so <b>total overflow largely measures wirelength</b>. Name the metric before saying "better".</p>
+<h3>7. A different RUDY changes the conclusion</h3>
+<p>Real tools (DREAMPlace's <code>rudy</code> op, OpenROAD's <code>grt::Rudy</code>) share by <b>overlap area</b>: a tile gets HPWL × overlap area ÷ box area. That is this lesson's model A. On the same spread placement, model A's max overflow is 5.54, higher than the cluster's 5. Under model A even max overflow favours the cluster. RUDY is a family of methods; say which one you use.</p>
+<div class="grid2">
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow","model":"P"}'><figcaption>Model P (equal shares), spread, C = 2.</figcaption></figure>
+<figure data-needs-fixture data-fig='{"preset":"spread","layer":"overflow","model":"A"}'><figcaption>Model A (by area), spread, C = 2. Same legend.</figcaption></figure>
+</div>
+<h3>8. Limits</h3>
+<ul>
+<li>RUDY is a fast pre-routing estimate, not a routing result, and certainly not manufacturability sign-off.</li>
+<li>Real capacity is split by direction and by metal layer; DREAMPlace produces separate horizontal and vertical maps.</li>
+<li>Multi-pin nets are longer than their HPWL. RISA (Cheng, ICCAD 1994) scales by pin count, e.g. 1.0828 for 4 pins; neither model P nor model A applies it.</li>
+<li>How well it predicts congestion has to be measured against a router (e.g. per-tile Spearman correlation); the Checks section describes how.</li>
+</ul>
+</section>
+
+<section class="sec" id="code">
+<h2>Pseudocode (model P)</h2>
+<pre class="code" tabindex="0">1  demand ← zero matrix [nx][ny]          # every computation starts fresh
+2  for each net:
+3    box ← bounding box of its pins
+4    hpwl ← box width + box height         # line nets valid; 0 for coincident pins
+5    tiles ← every tile between the corner tiles, inclusive   # floor, then clamp
+6    share ← hpwl ÷ |tiles|                # divide by tile count, not by area
+7    for t in tiles: demand[t] += share
+8  overflow[t] ← max(0, demand[t] − C)     # C must be > 0; capacity never changes demand</pre>
+<p>Input is validated first: unknown pins, empty nets, non-finite or off-chip coordinates, a grid that does not tile the chip, and capacity ≤ 0 are rejected with a reason, instead of producing NaN or a reassuring all-zero map.</p>
+</section>
+
+<section class="sec" id="film-sec">
+<h2>Film (silent, captioned)</h2>
+<p>The film is drawn by code: this player and the MP4 use the same <code>renderAt(t)</code>. Pause anywhere and press "Try this frame" to carry that instant's pins, grid, capacity, model and selected net into the lab exactly.</p>
+<div id="film" data-needs-fixture>
+  <div class="stage" role="img" aria-label="Film frame"></div>
+  <div class="controls">
+    <button type="button" data-film="play">Play</button>
+    <input type="range" min="0" step="0.01" value="0" aria-label="Time">
+    <span class="time"></span>
+    <select name="cut" aria-label="Cut"><option value="full">Full film</option><option value="sample">Sample</option></select>
+    <button type="button" data-film="try">Try this frame</button>
+    <span class="tried" aria-live="polite"></span>
+  </div>
+</div>
+<details><summary>MP4 version (download)</summary>
+<video controls preload="none" poster="../media/poster.en.jpg">
+  <source src="../media/rudy-full.en.mp4" type="video/mp4">
+  <track kind="captions" srclang="zh" label="中文" src="../media/rudy-full.zh.vtt">
+</video>
+<p class="small">English captions are burned in; Chinese captions can be turned on in the player. <a href="../media/rudy-full.en.mp4" download>Download the English MP4</a> · <a href="../media/rudy-full.zh.mp4" download>Chinese MP4</a> · <a href="../media/rudy-full.en.vtt">English VTT</a> · <a href="../media/rudy-full.zh.vtt">Chinese VTT</a></p>
+</details>
+</section>
+
+<section class="sec" id="lab-sec">
+<h2>Lab</h2>
+<p>Drag pins (or use the keyboard, or type coordinates), switch model and heat map, step through the nets, change capacity. The heat map and number grid always agree and the legend is fixed. Click any tile to see which nets its demand comes from.</p>
+<div id="lab" data-needs-fixture></div>
+</section>
+
+<section class="sec" id="challenges">
+<h2>Challenges</h2>
+<p>Graded on the lab's real state or on the number you compute; more than one answer can be right. Each has two hints; challenges solved after viewing the solution are recorded separately.</p>
+<div id="challenge-list" data-needs-fixture></div>
+</section>
+
+<section class="sec" id="python">
+<h2>Python practice</h2>
+<p>You can finish the lesson without Python. To implement it yourself, download:</p>
+<ul>
+<li><a href="../downloads/starter.py">starter.py</a>: fill in <code>tile_of</code>, <code>demand_p</code> and <code>overflow_metrics</code>.</li>
+<li><a href="../downloads/check.py">check.py</a>: the checker, prints PASS / INCOMPLETE / FAIL.</li>
+<li><a href="../downloads/fixture.json">fixture.json</a> and <a href="../downloads/expected.json">expected.json</a>: the teacher's example and expected results as fractions.</li>
+<li><a href="../downloads/rudy_ref.py">rudy_ref.py</a>: an exact-fraction reference (try first).</li>
+</ul>
+<pre class="code" tabindex="0">python3 check.py              # checks starter.py
+python3 check.py rudy_ref.py  # checks the reference</pre>
+</section>
+
+<section class="sec" id="slides">
+<h2>Slides</h2>
+<div id="slides-viewer" data-needs-fixture>
+  <div class="bar"><button type="button" data-s="prev">Previous</button><span class="pageno"></span><button type="button" data-s="next">Next</button> <a href="../slides/rudy-slides.en.pdf">Download PDF</a></div>
+  <div class="slide"></div>
+  <p class="notes"></p>
+</div>
+</section>
+
+<section class="sec" id="checks">
+<h2>How we know the numbers are right</h2>
+<p>The numbers are not checked only by their author. <code>oracles/</code> and <code>tests/</code> in the repository rerun on every build:</p>
+<ul>
+<li><b>The teacher's own code</b>: unmodified <code>congestion-core.js</code> and <code>solvers.py</code> versus model P on 5000 + 1000 generated cases: 0 mismatches.</li>
+<li><b>Exact fractions</b>: the Python reference uses <code>fractions.Fraction</code>; the example equals 37/6, 14/3, 25/6, 20/3 exactly.</li>
+<li><b>Real tools' code</b>: the RUDY kernels copied verbatim from DREAMPlace (4adf954) and OpenROAD (7b26270), compiled and compared tile by tile with model A: 1489 and 739 cases, 0 mismatches.</li>
+<li><b>Property tests</b>: fast-check and Hypothesis check conservation, capacity independence, net-order independence, linearity and mirror symmetry (for model P only off tile edges).</li>
+<li><b>JS versus Python</b>: 2000 cases with random grids, non-integer and boundary coordinates, line nets, coincident pins and malformed input: 0 mismatches.</li>
+</ul>
+<p>How the implementations differ on edge cases is in <a href="https://github.com/Su3037/congestion-lesson04-rudy/blob/main/docs/edge-cases.md">docs/edge-cases.md</a>: a horizontal line net, for example, gets a positive value in model P, 0 in DREAMPlace, and is skipped by OpenROAD.</p>
+</section>
+
+<section class="sec" id="refs">
+<h2>References, licences, reproduction</h2>
+<ul>
+<li>P. Spindler, F. M. Johannes. <i>Fast and Accurate Routing Demand Estimation for Efficient Routability-driven Placement.</i> DATE 2007. <a href="https://doi.org/10.1109/DATE.2007.364463">doi:10.1109/DATE.2007.364463</a>. No figures from the paper are reproduced.</li>
+<li>C.-L. E. Cheng. <i>RISA: Accurate and Efficient Placement Routability Modeling.</i> ICCAD 1994 (multi-pin factors).</li>
+<li>Course source: Yongfu Li, <a href="https://github.com/yongfu-li/eda-learning/tree/main/courses/learn_congestion/module02-01-rudy-estimate">eda-learning · module02-01-rudy-estimate</a> (pinned 003bcd4), CC BY 4.0. This lesson adapts the example data and classroom model and rewrites the explanation, animation, lab and exercises.</li>
+<li>Comparison code: <a href="https://github.com/limbo018/DREAMPlace">DREAMPlace</a> (BSD-3-Clause), <a href="https://github.com/The-OpenROAD-Project/OpenROAD">OpenROAD</a> (BSD-3-Clause).</li>
+<li>New code MIT, new teaching content CC BY 4.0. Fonts Noto Sans SC and JetBrains Mono, SIL OFL 1.1. The film has no narration and no music.</li>
+<li>Source and reproduction steps: <a href="https://github.com/Su3037/congestion-lesson04-rudy">github.com/Su3037/congestion-lesson04-rudy</a> (see docs/REPRODUCIBILITY.md).</li>
+</ul>
+</section>
+</main>
+<footer>Congestion Lesson 4 · RUDY. Made for <a href="https://github.com/yongfu-li/eda-learning/issues/42">yongfu-li/eda-learning#42</a>.</footer>
+<script type="module" src="../js/app.js"></script>
+</body>
+</html>

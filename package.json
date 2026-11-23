@@ -1,0 +1,28 @@
+{
+  "name": "congestion-lesson04-rudy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "RUDY congestion estimate: a reproducible classroom lesson (Congestion Lesson 04)",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "oracle:teacher": "node oracles/teacher_diff.mjs",
+    "oracle:crosslang": "node oracles/crosslang.mjs",
+    "oracle:upstream": "bash oracles/upstream/run.sh",
+    "build": "node scripts/build_site.mjs",
+    "serve": "node scripts/serve.mjs",
+    "check:site": "node scripts/check_site.mjs",
+    "render:sample": "node scripts/render_film.mjs --cut sample",
+    "render:film": "node scripts/render_film.mjs --cut full",
+    "render:stills": "node scripts/render_film.mjs --stills",
+    "slides:pdf": "node scripts/export_slides.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/noto-sans-sc": "^5.3.1",
+    "axe-core": "4.10.2",
+    "fast-check": "3.23.2",
+    "playwright": "1.63.0"
+  }
+}

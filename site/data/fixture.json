@@ -1,0 +1,142 @@
+{
+ "_source": "Adapted from yongfu-li/eda-learning courses/learn_congestion/common/tiny_cong.json @ 003bcd49e3794e6cfd2680181cdbd347d673ad07 (CC BY 4.0, Yongfu Li). Changes: cell widths dropped (pins are points in this lesson), presets renamed, extra teaching presets added.",
+ "chip": {
+  "W": 12,
+  "H": 8
+ },
+ "gcell": {
+  "nx": 4,
+  "ny": 2,
+  "cellW": 3,
+  "cellH": 4
+ },
+ "capacity": 2.0,
+ "pins": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F"
+ ],
+ "nets": [
+  [
+   "A",
+   "B"
+  ],
+  [
+   "C",
+   "D"
+  ],
+  [
+   "A",
+   "C"
+  ],
+  [
+   "B",
+   "D"
+  ],
+  [
+   "A",
+   "B",
+   "C",
+   "D"
+  ],
+  [
+   "E",
+   "F"
+  ]
+ ],
+ "presets": {
+  "spread": {
+   "zh": "展开参考（老师 placement）",
+   "en": "Spread reference (teacher placement)",
+   "positions": {
+    "A": {
+     "x": 1,
+     "y": 1
+    },
+    "B": {
+     "x": 8,
+     "y": 1
+    },
+    "C": {
+     "x": 1,
+     "y": 5
+    },
+    "D": {
+     "x": 8,
+     "y": 5
+    },
+    "E": {
+     "x": 5,
+     "y": 3
+    },
+    "F": {
+     "x": 6,
+     "y": 3
+    }
+   }
+  },
+  "cluster": {
+   "zh": "中心聚集（老师 congested_seed）",
+   "en": "Center cluster (teacher congested_seed)",
+   "positions": {
+    "A": {
+     "x": 4,
+     "y": 2
+    },
+    "B": {
+     "x": 5,
+     "y": 2
+    },
+    "C": {
+     "x": 4,
+     "y": 3
+    },
+    "D": {
+     "x": 5,
+     "y": 3
+    },
+    "E": {
+     "x": 4.5,
+     "y": 2.5
+    },
+    "F": {
+     "x": 5.5,
+     "y": 2.5
+    }
+   }
+  },
+  "boundary": {
+   "zh": "边界例子：A 在 x=3",
+   "en": "Boundary case: A at x=3",
+   "positions": {
+    "A": {
+     "x": 3,
+     "y": 1
+    },
+    "B": {
+     "x": 8,
+     "y": 1
+    },
+    "C": {
+     "x": 1,
+     "y": 5
+    },
+    "D": {
+     "x": 8,
+     "y": 5
+    },
+    "E": {
+     "x": 5,
+     "y": 3
+    },
+    "F": {
+     "x": 6,
+     "y": 3
+    }
+   }
+  }
+ }
+}

@@ -21,7 +21,8 @@
     "oracle:crosslang": "node oracles/crosslang.mjs",
     "oracle:edge": "node oracles/edge_cases.mjs",
     "oracle:upstream": "bash oracles/upstream/run.sh",
-    "voice": "python3 scripts/voice/render-voice-kokoro.py --zh-voice zf_039 && python3 scripts/voice/asr_check.py"
+    "voice": "python3 scripts/voice/render-voice-kokoro.py --zh-voice zf_039 && python3 scripts/voice/asr_check.py",
+    "test:browser-python": "node tests/browser-python.mjs"
   },
   "devDependencies": {
     "fast-check": "3.23.2",

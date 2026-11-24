@@ -1,3 +1,4 @@
+import {createPythonLab} from '../python-lab/python-lab.js';
 // Page bootstrap: language, sections, figures, worked table, lab, film player, challenges, quiz, slides.
 import {prepareFixtures, makeState, analyse, fmt, frac} from './domain.js';
 import {Board, netColor, escapeText as E} from './board.js';
@@ -218,7 +219,7 @@ async function main() {
   ${sec('lab', '05', T.labTitle, T.labIntro, '<div data-k="lab" class="lab"></div>', 'dark')}
   ${sec('challenges', '06', T.challengesTitle, T.challengesIntro, `<div class="challenges">${CHALLENGES.map(challengeCard).join('')}</div>`)}
   ${sec('quiz', '07', T.quizTitle, '', T.quiz.map((q, i) => `<fieldset class="quiz-item"><legend><span>${String(i + 1).padStart(2, '0')}</span> ${E(q.q)}</legend>${q.a.map((a, j) => `<label><input type="radio" name="quiz-${i}" value="${j}"> ${E(a)}</label>`).join('')}<p class="fb" aria-live="polite"></p></fieldset>`).join(''))}
-  ${sec('python', '08', T.pythonTitle, T.pythonIntro, `<ol class="objectives">${T.pythonSteps.map(s => `<li>${s}</li>`).join('')}</ol><p class="btn-row"><a class="btn primary" href="downloads/rudy-python.zip" download>${T.pythonDownload}</a></p><p class="small muted">${T.pythonNote}</p>`)}
+  ${sec('python', '08', T.pythonTitle, T.pythonIntro, `<div data-python-lab></div><details class="offline-practice"><summary>${lang === 'zh' ? '离线练习与下载（可选）' : 'Offline practice and download (optional)'}</summary><ol class="objectives">${T.pythonSteps.map(s => `<li>${s}</li>`).join('')}</ol><p class="btn-row"><a class="btn" href="downloads/rudy-python.zip" download>${T.pythonDownload}</a></p><p class="small muted">${T.pythonNote}</p></details>`)}
   ${sec('mistakes', '09', T.mistakesTitle, '', `<div class="mistakes">${T.mistakes.map(([a, b]) => `<div class="mistake"><h4>${a}</h4><p>${b}</p></div>`).join('')}</div>
     <div class="limits"><h3>${T.limitsTitle}</h3><ul class="prose">${T.limits.map(l => `<li>${l}</li>`).join('')}</ul></div>`)}
   ${sec('repro', '10', T.reproTitle, '', `<div class="grid-2"><div class="prose">${T.repro.map(p => `<p>${links(p)}</p>`).join('')}</div><div><h3>${T.sourcesTitle}</h3><ul class="credits-list">${T.sources.map(s => `<li>${links(s)}</li>`).join('')}</ul></div></div>`)}
@@ -231,6 +232,7 @@ async function main() {
   wireQuiz(app.querySelector('#quiz'));
   wireSlides(app.querySelector('#slides'), slidesManifest);
   wireNav();
+  await createPythonLab(app.querySelector('[data-python-lab]'), {lang});
   await window.rudyPlayer.ready.catch(e => console.error(e));
   if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
   window.appReady = true;

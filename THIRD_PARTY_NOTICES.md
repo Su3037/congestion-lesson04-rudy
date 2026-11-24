@@ -22,3 +22,7 @@
 Subsetting is a modification the OFL allows. The subsets keep their family names; none uses a Reserved Font Name
 (Noto's licence reserves only “Source”). The score of the 精讲, 进阶 and 实验演示 films is original (`scripts/music.py`,
 NumPy synthesis, from the owner's course). No stock images or characters are used.
+
+## Browser Python runtime
+
+The online code lab vendors unmodified Pyodide 314.0.8 (MPL-2.0) and CPython 3.14.2 / standard-library files (PSF and retained notices). See `site/python-lab/vendor/README.md`, the bundled license texts and SHA256 manifest. These licenses are independent of the lesson licenses.

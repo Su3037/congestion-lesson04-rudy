@@ -40,6 +40,7 @@ jobs:
         run: |
           sleep 20
           node tests/browser.mjs --base https://su3037.github.io/congestion-lesson04-rudy/
+          SITE_URL=https://su3037.github.io/congestion-lesson04-rudy/ node tests/browser-python.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -68,3 +68,7 @@ film (“We Never (Remix)”, Hi Noise / 秋成), which is credited and not part
 with Kokoro-82M (Apache-2.0). Fonts: SIL OFL 1.1. The example data and the classroom rule are adapted from
 yongfu-li/eda-learning and credited. The render contract idea is adapted from GateUltra/vlsi-course-director
 (MIT, `NOTICE.md`). See `THIRD_PARTY_NOTICES.md`.
+
+## Online Python practice
+
+Section 08 now includes a real browser Python editor: run code, test the original exercise cases, inspect errors, save drafts, and import/export `.py` files. No Python installation is required. Runtime assets are served from this site, with no execution backend or CDN dependency. See [online Python documentation](docs/online-python.md).

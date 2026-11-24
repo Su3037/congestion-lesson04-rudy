@@ -13,6 +13,7 @@ mkdirSync(`${ROOT}site/data`, {recursive: true});
 copyFileSync(`${ROOT}fixtures/rudy-fixtures.json`, `${ROOT}site/data/fixtures.json`);
 copyFileSync(`${ROOT}content/slides.json`, `${ROOT}site/data/slides.json`);
 run('node', ['scripts/build-films.mjs', ...(process.argv.includes('--draft') ? ['--draft'] : [])]);
+run('python3', ['scripts/build-python-lab.py']);
 run('python3', ['scripts/build-python-zip.py']);
 if (!process.argv.includes('--no-slides')) {
   run('node', ['scripts/build-slides.mjs']);
